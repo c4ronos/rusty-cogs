@@ -11,7 +11,7 @@
         <img align="center" src="ps" />
     </a>
   <h1 align="center">Katana-Cogs</h1>
-  <h2><p align="center"> Red Discord Bot V3 Cogs</h2>
+  <h2><p align="center"> Cogs for Red Discord Bot v3</h2>
       <p align="center">
 </p>
 <br />
