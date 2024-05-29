@@ -37,8 +37,8 @@ load cogname
 |-------------|------------------|---------------------------------------------------|
 | [avatar](avatar/)      | Unreleased      | Returns a user's avatar in an embed     |
 | [Banner](banner/)      | Unreleased      | Returns a user's banner in an embed     |
-|⠀                      |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                     |
-|⠀                      |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                     |
+|⠀ ⠀                     |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                     |
+|⠀   ⠀                   |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                     |
 
 # Contact⠀✿
 ---
