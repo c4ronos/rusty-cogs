@@ -16,7 +16,7 @@
 </p>
 <br />
 
-# Installation ✿
+# Installation⠀✿
 ---
 **1. Add the repository to your bot**
 ```text
@@ -31,16 +31,16 @@ cog install Katana-Cogs cogname
 load cogname
 ```
 
-# Cogs ✿
+# Cogs⠀✿
 ---
-|     **NAME** |                **DESCRIPTION** |
-| :-------------------- | :---------- |
-| [avatar](avatar/)     | Returns a user's avatar in an embed. |
-| [banner](banner/)     | Returns a user's banner in an embed. |
-|                       |                                        |
-|                       |                                        |
+| NAME        | STATUS/VERSION   | DESCRIPTION                                                   |
+|-------------|------------------|---------------------------------------------------------------|
+| [avatar](avatar/)      | Unreleased       | Returns a user's avatar in an embed                |
+| [Banner](banner/)      | Unreleased       | Returns a user's banner in an embed                |
+|⠀                       |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                     |
+|⠀                       |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                     |
 
-# Contact ✿
+# Contact⠀✿
 ---
 ➥ dm me - `katanadotnet`
 <br /> <br/>
