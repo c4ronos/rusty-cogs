@@ -1,0 +1,8 @@
+{
+    "author" : ["Katana (katanadotnet)"],
+    "name": "Katana-Cogs",
+    "short": "Some cogs for red.",
+    "description": "Original and rewritten cogs with a focus on aesthetic.",
+    "install_msg": "Thanks for installing Katana-Cogs.\nIf you need help, ping me in <#240212783503900673> on the [cog support server](<https://discord.gg/red-cog-support-240154543684321280>).\nAlternatively, make an issue on my repo."",
+    "tags" : [""]
+}
