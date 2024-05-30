@@ -4,13 +4,13 @@
 <!-- UP  -->
 <p align="center">
   <a href="https://github.com/katanadotnet/katana-cogs">
-    <img src="https://w.wallhaven.cc/full/vq/wallhaven-vqze58.jpg">
+    <img src="https://i.imgur.com/xc6nNds.png">
   </a>
-  <br/> <br/> <br/>
+  <br/> <br/>
       <a href="https://discord.gg/vb2Vqzuf">
-        <img align="center" src="ps" />
+        <img align="center" src="https://i.imgur.com/DPcFr7U.png" />
     </a>
-  <h1 align="center">Katana-Cogs</h1>
+  <h1 align="center"></h1>
   <h2><p align="center"> Cogs for Red Discord Bot v3</h2>
       <p align="center">
 </p>
