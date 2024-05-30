@@ -3,15 +3,15 @@
 ---
 <!-- UP  -->
 <p align="center">
-  <a href="https://github.com/katanadotnet/katana-cogs">
+  <a href="https://github.com/katanadotnet/Katana-Cogs">
     <img src="https://i.imgur.com/xc6nNds.png" alt="Repository Banner"/>
   </a>
   <br/> <br/>
-      <a href="https://discord.gg/vb2Vqzuf">
-        <img align="center" src="https://i.imgur.com/DPcFr7U.png" alt="Username Banner" width="300" height="51"/>
+      <a href="https://discord.com/channels/@me">
+        <img align="center" src="https://i.imgur.com/DPcFr7U.png" alt="Username Banner" width="225"/>
     </a>
   <h1 align="center"></h1>
-  <h2><p align="center"> Cogs for Red Discord Bot v3</h2>
+  <h2><p align="center">Cogs for Red Discord Bot v3</h2>
       <p align="center">
 </p>
 <br />
