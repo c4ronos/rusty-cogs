@@ -1,0 +1,29 @@
+{
+	"author": [
+		"Shit Show Development"
+	],
+	"name": "WaifuIM",
+	"description": "Get waifu images and gifs using waifu.im api.",
+	"end_user_data_statement": "This cog does not persistantly store data or metadata about users.",
+	"install_msg": "Thank you for installing this cog!\nUse `[p]help WaifuIM` to get the list of commands and how to use them.",
+	"short": "Get waifu images and gifs using waifu.im api.",
+	"permissions": [
+		"send_messages", 
+		"embed_links"
+	],
+	"max_bot_version": "0.0.0",
+    "min_bot_version": "3.5.0",
+    "min_python_version": [
+        3,
+        9,
+        0
+    ],
+	"required_cogs": {},
+	"requirements": [],
+	"tags": [
+		"images", 
+		"nsfw", 
+		"sfw"
+	],
+	"type": "COG"
+}
