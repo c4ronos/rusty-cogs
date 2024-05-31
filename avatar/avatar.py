@@ -16,7 +16,7 @@ class Avatar(commands.Cog):
         """
 
         user = user or ctx.author
-        embed = discord.Embed(color=0xFFFFFF, title="Avatar")
+        embed = discord.Embed(color=await ctx.embed_color(), title="Avatar")
 
         try:
             # Attempt to fetch the avatar URL
