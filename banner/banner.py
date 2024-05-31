@@ -27,6 +27,8 @@ class Banner(commands.Cog):
                 banner_url = user.banner.url
                 embed.set_image(url=banner_url)
 
+                embed.set_author(name=f"{user.name} ~ {user.display_name}", icon_url=user.avatar.url)
+
             else:
                 embed.description = "This user doesn't have a banner."
 
@@ -35,8 +37,6 @@ class Banner(commands.Cog):
 
         # - Detect animated banners (might need sometime) -
         #is_animated = banner_url.endswith(".gif")
-
-        embed.set_author(name=f"{user.name} ~ {user.display_name}", icon_url=user.avatar.url)
 
         if ctx.channel.permissions_for(ctx.guild.me).embed_links:
             await ctx.send(embed=embed)
