@@ -21,18 +21,18 @@ class Avatar(commands.Cog):
         try:
             # Attempt to fetch the avatar URL
             avatar_url = user.avatar.url
+
+            embed.set_author(name=f"{user.name} ~ {user.display_name}", icon_url=user.avatar.url)
+            embed.set_image(url=avatar_url)
+	
         except discord.HTTPException:
-            # Handle potential exceptions
+
             embed.description = "No avatar found for this user."
             await ctx.send(embed=embed)
             return
 
         # - Detect animated banners (might need sometime) -
         #is_animated = avatar_url.endswith(".gif")
-
-        embed.set_image(url=avatar_url)
-
-        embed.set_author(name=f"{user.name} ~ {user.display_name}", icon_url=user.avatar.url)
 
         if ctx.channel.permissions_for(ctx.guild.me).embed_links:
             await ctx.send(embed=embed)
