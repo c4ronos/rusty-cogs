@@ -6,3 +6,11 @@
     "install_msg": "Thanks for installing Katana-Cogs.\nIf you need help, ping me in <#240212783503900673> on the [cog support server](<https://discord.gg/red-cog-support-240154543684321280>).\nAlternatively, make an issue on my repo."",
     "tags" : [""]
 }
+  {
+    "author" : ["Katana (katandotnet)"],
+    "install_msg" : "Thank you for installing Katana-Cogs! If you need support, ping me in the Cog Support server or create an issue on GitHub.",
+    "name" : "Katana-Cogs",
+    "short" : "Some cogs for Red-DiscordBot!",
+    "description" : "Original and rewritten cogs with a focus on aesthetic.",
+    "tags" : ["utility", "functions","user","server"]
+  }

@@ -1,1 +1,13 @@
 
+{
+    "author": ["Katana"],
+    "description": "Cog to get user's avatar in an embed, without any bloat.",
+    "install_msg": "Thanks for installing `avatar`. See `[p]help Avatar` for details.",
+    "short": "Get a user's avatar.",
+    "hidden": false,
+    "disabled": false,
+    "required_cogs": {},
+    "requirements": [],
+    "tags": ["server","user","avatar"],
+    "type": "COG"
+  }
