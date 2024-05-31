@@ -34,8 +34,8 @@ load cogname
 ---
 | NAME        | STATUS/VERSION   | DESCRIPTION                                       |
 |-------------|------------------|---------------------------------------------------|
-| [Avatar](avatar/)      | Unreleased      | Returns a user's avatar in an embed     |
-| [Banner](banner/)      | Unreleased      | Returns a user's banner in an embed     |
+| [Avatar](avatar/)      | 1.0.1      | Returns a user's avatar in an embed     |
+| [Banner](banner/)      | 1.0.3      | Returns a user's banner in an embed     |
 |⠀ ⠀                     |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀                     |
 |⠀   ⠀                   |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀                     |
 
