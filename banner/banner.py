@@ -16,7 +16,7 @@ class Banner(commands.Cog):
         """
 
         user = user or ctx.author
-        embed = discord.Embed(color=0xFFFFFF, title="Banner")
+        embed = discord.Embed(color=await ctx.embed_color(), title="Banner")
 
         
         try:
