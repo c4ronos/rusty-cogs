@@ -16,7 +16,7 @@ class Avatar(commands.Cog):
         """
 
         user = user or ctx.author
-        embed = discord.Embed(color=await ctx.embed_color(), title="Avatar")
+        embed = discord.Embed(color=user.color, title="Avatar")
 
         try:
             # Attempt to fetch the avatar URL
@@ -32,7 +32,7 @@ class Avatar(commands.Cog):
 
         embed.set_image(url=avatar_url)
 
-        embed.set_author(name=user.display_name, icon_url=user.avatar.url)
+        embed.set_author(name=f"{user.name} ~ {user.display_name}", icon_url=user.avatar.url)
 
         if ctx.channel.permissions_for(ctx.guild.me).embed_links:
             await ctx.send(embed=embed)
