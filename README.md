@@ -14,7 +14,6 @@
   <h2><p align="center">Cogs for Red Discord Bot v3</h2>
       <p align="center">
 </p>
-<br />
 
 # Installation⠀✿
 ---
