@@ -34,10 +34,10 @@ load cogname
 ---
 | NAME        | STATUS/VERSION   | DESCRIPTION                                       |
 |-------------|------------------|---------------------------------------------------|
-| [Avatar](avatar/)      | 1.1.0      | Returns a user's avatar in an embed     |
-| [Banner](banner/)      | 1.2.0      | Returns a user's banner in an embed     |
-|⠀ ⠀                     |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀                     |
-|⠀   ⠀                   |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀                     |
+| [Avatar](avatar/)      | 1.1.0      | Returns a user's avatar in an embed                 |
+| [Banner](banner/)      | 1.2.0      | Returns a user's banner in an embed                 |
+|⠀[WaifuIM](waifuim/)    | 1.0.0      | Get images from waifu.im api (credits: PhantomNimbi)|
+|⠀   ⠀                   |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀                                 |
 
 # Contact⠀✿
 ---
