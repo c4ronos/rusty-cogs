@@ -1,5 +1,5 @@
 ## Disclaimer ⇝ Install these cogs at your own risk. <br />
-## [cogs are currently in development]
+## [cogs are currently not fully developed]
 ---
 <!-- UP  -->
 <p align="center">
