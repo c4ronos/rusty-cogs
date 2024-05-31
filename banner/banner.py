@@ -16,7 +16,7 @@ class Banner(commands.Cog):
         """
 
         user = user or ctx.author
-        embed = discord.Embed(color=await ctx.embed_color(), title="Banner")
+        embed = discord.Embed(color=user.color, title="Banner")
 
         
         try:
@@ -36,7 +36,7 @@ class Banner(commands.Cog):
         # - Detect animated banners (might need sometime) -
         #is_animated = banner_url.endswith(".gif")
 
-        embed.set_author(name=user.display_name, icon_url=user.avatar.url)
+        embed.set_author(name=f"{user.name} ~ {user.display_name}", icon_url=user.avatar.url)
 
         if ctx.channel.permissions_for(ctx.guild.me).embed_links:
             await ctx.send(embed=embed)
