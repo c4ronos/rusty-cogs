@@ -1,4 +1,4 @@
-## Fork of WaifuIM made by PhantomNimbi (ShitShowCogs)
+# Fork of WaifuIM made by PhantomNimbi (ShitShowCogs)
 ### NSFW Commands can only be used in NSFW channels.
 
 # Commands:
