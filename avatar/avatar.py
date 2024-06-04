@@ -31,7 +31,7 @@ class Avatar(commands.Cog):
             await ctx.send(embed=embed)
             return
 
-        # - Detect animated banners (might need sometime) -
+        # - Detect animated avatars (might need sometime) -
         #is_animated = avatar_url.endswith(".gif")
 
         if ctx.channel.permissions_for(ctx.guild.me).embed_links:
