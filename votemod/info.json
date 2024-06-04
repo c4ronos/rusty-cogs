@@ -1,0 +1,12 @@
+{
+    "author": ["Katana (katanadotnet)"],
+    "description": "Fun vote-based moderation command for banning / kicking users.",
+    "install_msg": "Thanks for installing `votemod`. See `[p]help votemod` for details.",
+    "short": "Fun vote-based moderation.",
+    "hidden": false,
+    "disabled": false,
+    "required_cogs": {},
+    "requirements": [],
+    "tags": ["server", "fun", "moderation"],
+    "type": "COG"
+}
