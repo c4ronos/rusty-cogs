@@ -32,12 +32,13 @@ load cogname
 
 # Cogs⠀✿
 ---
-| NAME        | STATUS/VERSION   | DESCRIPTION                                       |
-|-------------|------------------|---------------------------------------------------|
-| [Avatar](avatar/)      | 1.1.0      | Returns a user's avatar in an embed                 |
-| [Banner](banner/)      | 1.2.0      | Returns a user's banner in an embed                 |
-| [WaifuIM](waifuim/)    | 1.0.0      | Get images from waifu.im api (credits: PhantomNimbi)|
-|⠀   ⠀                   |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀                                 |
+| NAME        | STATUS/VERSION   | DESCRIPTION                                                      |
+|-------------|------------------|------------------------------------------------------------------|
+| [Avatar](avatar/)      | 1.1.0      | Returns a user's avatar in an embed                         |
+| [Banner](banner/)      | 1.2.0      | Returns a user's banner in an embed                         |
+| [VoteMod](votemod/)    | 1.0.1      | Vote-based moderation command for banning / kicking users.  |
+| [WaifuIM](waifuim/)    | 1.0.0      | Get images from waifu.im api (credits: PhantomNimbi)        |
+|⠀   ⠀                   |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀                                         |
 
 # Contact⠀✿
 ---
