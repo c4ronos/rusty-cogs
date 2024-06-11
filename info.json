@@ -1,7 +1,7 @@
   {
-    "author" : ["Katana (katandotnet)"],
-    "install_msg" : "Thank you for installing Katana-Cogs! If you need support, ping me in the Cog Support server or create an issue on GitHub.",
-    "name" : "Katana-Cogs",
+    "author" : ["Rusty (rusty-man)"],
+    "install_msg" : "Thank you for installing `rusty-cogs`! If you need support, ping me in the Cog Support server or create an issue on GitHub.",
+    "name" : "rusty-cogs",
     "short" : "Some cogs for Red-DiscordBot!",
     "description" : "Original and rewritten cogs with a focus on aesthetic.",
     "tags" : ["utility", "functions","user","server"]
