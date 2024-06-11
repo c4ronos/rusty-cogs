@@ -18,11 +18,11 @@
 ---
 **1. Add the repository to your bot**
 ```text
-repo add Katana-Cogs https://github.com/katanadotnet/Katana-Cogs
+repo add rusty-cogs https://github.com/rusty-man/rusty-cogs
 ```
 **2. Install the cog you want**
 ```text
-cog install Katana-Cogs cogname
+cog install rusty-cogs cogname
 ```
 **3. Load the cog you installed**
 ```text
