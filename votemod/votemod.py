@@ -8,9 +8,6 @@ class VoteMod(commands.Cog):
     Fun vote-based moderation commands for banning or kicking users.
     """
 
-    __version__ = "1.0.1"
-    __author__ = ["Katana (katanadotnet)"]
-
     def __init__(self, bot: Red):
         self.bot = bot
         self.config = Config.get_conf(self, identifier=167470521189)
