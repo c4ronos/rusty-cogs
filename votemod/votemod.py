@@ -37,6 +37,14 @@ class VoteMod(commands.Cog):
         await ctx.send(f"Required votes for voteban and votekick set to {votes}.")
 
     async def start_vote(self, ctx: commands.Context, member: discord.Member, action: str):
+        # Check bot hierarchy
+        if member.top_role >= ctx.guild.me.top_role:
+            return await ctx.send(f"I do not have permissions to {action} this user.")
+        
+        # Check user hierarchy
+        if member.top_role >= ctx.author.top_role:
+            return await ctx.send(f"You do not have permissions to {action} this user.")
+
         required_votes = await self.config.guild(ctx.guild).required_votes()
 
         embed = discord.Embed(
