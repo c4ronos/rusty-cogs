@@ -16,17 +16,14 @@
 
 # Installation⠀✿
 ---
-**1. Add the repository to your bot**
 ```text
 repo add rusty-cogs https://github.com/rusty-man/rusty-cogs
 ```
-**2. Install the cog you want**
 ```text
-cog install rusty-cogs cogname
+cog install rusty-cogs cog
 ```
-**3. Load the cog you installed**
 ```text
-load cogname
+load cog
 ```
 
 # Cogs⠀✿
