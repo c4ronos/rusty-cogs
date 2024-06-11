@@ -1,5 +1,5 @@
 {
-    "author": ["Katana (katanadotnet)"],
+    "author": ["rusty-man"],
     "description": "Cog to get user's avatar in an embed, without any bloat.",
     "install_msg": "Thanks for installing `avatar`. See `[p]help Avatar` for details.",
     "short": "Get a user's avatar.",
