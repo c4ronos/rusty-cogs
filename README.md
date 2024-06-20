@@ -3,7 +3,7 @@
 <!-- UP  -->
 <p align="center">
   <a href="https://github.com/katanadotnet/Katana-Cogs">
-    <img src="https://i.ibb.co/c6yCzXw/preview.png" alt="Repository Banner"/>
+    <img src="https://i.ibb.co/wYLcVHG/fc5f53af.jpg" alt="Repository Banner"/>
   </a>
   <br/> <br/>
   <h1 align="center"></h1>
