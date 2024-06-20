@@ -6,9 +6,6 @@
     <img src="https://i.imgur.com/xc6nNds.png" alt="Repository Banner"/>
   </a>
   <br/> <br/>
-      <a href="https://discord.com/channels/@me">
-        <img align="center" src="https://i.imgur.com/DPcFr7U.png" alt="Username Banner" width="225"/>
-    </a>
   <h1 align="center"></h1>
   <h2><p align="center">Cogs for Red Discord Bot v3</h2>
       <p align="center">
@@ -28,16 +25,17 @@ load cog
 
 # Cogs⠀✿
 ---
-| NAME        | STATUS/VERSION   | DESCRIPTION                                                      |
+| NAME        | RELEASE          | DESCRIPTION                                                      |
 |-------------|------------------|------------------------------------------------------------------|
-| [Avatar](avatar/)      | 1.1.0      | Returns a user's avatar in an embed                         |
-| [Banner](banner/)      | 1.2.0      | Returns a user's banner in an embed                         |
-| [VoteMod](votemod/)    | 1.0.1      | Vote-based moderation command for banning / kicking users.  |
-| [WaifuIM](waifuim/)    | 1.0.0      | Get images from waifu.im api (credits: PhantomNimbi)        |
+| [Avatar](avatar/)      | Stable      | Returns a user's avatar in an embed                         |
+| [Banner](banner/)      | Stable      | Returns a user's banner in an embed                         |
+| [Echo](echo/)          | Stable      | Makes the bot say something in the specified channel.       |
+| [VoteMod](votemod/)    | Stable      | Vote-based moderation command for banning / kicking users.  |
+| [WaifuIM](waifuim/)    | Stable      | Get images from waifu.im api (credits: PhantomNimbi)        |
 |⠀   ⠀                   |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀                                         |
 
 # Contact⠀✿
 ---
-➥ dm me - `katanadotnet`
+➥ dm me - `1eus` or `0eus`
 <br /> <br/>
 ➥ ping me in [#support_othercogs](https://discord.com/channels/240154543684321280/240212783503900673) in the [Red - Cog Support](https://discord.gg/red-cog-support-240154543684321280) server

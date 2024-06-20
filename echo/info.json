@@ -1,0 +1,12 @@
+{
+    "author": ["rusty-man"],
+    "description": "Makes the bot say something in the specified channel.",
+    "install_msg": "Thanks for installing `echo`. See `[p]help Echo` for details.",
+    "short": "Echo a message.",
+    "hidden": false,
+    "disabled": false,
+    "required_cogs": {},
+    "requirements": [],
+    "tags": ["utility", "message", "echo"],
+    "type": "COG"
+}
