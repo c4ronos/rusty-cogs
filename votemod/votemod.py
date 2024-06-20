@@ -14,21 +14,21 @@ class VoteMod(commands.Cog):
         self.config.register_guild(required_votes=5)
         self.active_votes = {}
 
-    @commands.command(name="voteban")
+    @commands.hybrid_command(name="voteban", description="Start a vote to ban a user.")
     @checks.admin_or_permissions(administrator=True)
     @commands.guild_only()
     async def voteban(self, ctx: commands.Context, member: discord.Member):
         """Start a vote to ban a user."""
         await self.start_vote(ctx, member, "ban")
 
-    @commands.command(name="votekick")
+    @commands.hybrid_command(name="votekick", description="Start a vote to kick a user.")
     @checks.admin_or_permissions(administrator=True)
     @commands.guild_only()
     async def votekick(self, ctx: commands.Context, member: discord.Member):
         """Start a vote to kick a user."""
         await self.start_vote(ctx, member, "kick")
 
-    @commands.command(name="voteset")
+    @commands.hybrid_command(name="voteset", description="Set the number of votes required for votemod.")
     @checks.admin_or_permissions(administrator=True)
     @commands.guild_only()
     async def voteset(self, ctx: commands.Context, votes: int):

@@ -15,11 +15,14 @@ class Echo(commands.Cog):
         message="Input Message",
         channel="Input Channel"
     )
-    async def echo(self, ctx: commands.Context, message: str, channel: Optional[discord.TextChannel] = None):
+    async def echo(self, ctx: commands.Context, channel: Optional[discord.TextChannel] = None, *, message: str):
         """Makes the bot say something in the specified channel."""
 
         # Send an ephemeral confirmation
-        await ctx.send("Sent!", ephemeral=True)
+        if ctx.interaction:
+            await ctx.send("Sent!", ephemeral=True)
+        else:
+            await ctx.message.add_reaction("✅")
 
         # Determine the channel to send the message to
         target_channel = channel or ctx.channel
