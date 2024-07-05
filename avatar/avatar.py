@@ -10,27 +10,33 @@ class Avatar(commands.Cog):
         default_global = {"embed_color": None}
         self.config.register_global(**default_global)
 
-
     @commands.hybrid_command(name="avatar", description="Get a user's avatar")
     @app_commands.describe(user="The user you wish to retrieve the avatar of (optional)")
+    @app_commands.describe(type="Whether to return global avatar or guild (optional)")
     @app_commands.guild_only()
-    async def avatar(self, ctx: commands.Context, *, user: Optional[Union[discord.Member, discord.User]]) -> None:
-        """Returns a user's avatar as an embed.
+    async def avatar(self, ctx: commands.Context, user: Optional[Union[discord.Member, discord.User]] = None, type: Optional[str] = None) -> None:
+        """Returns a user's global/guild avatar as an embed.
 
-        The user argument can be a user mention, nickname, username, or user ID.
-        Defaults to the requester when no argument is supplied.
+        > The user argument can be a user mention, nickname, username, or user ID. (optional)
+        > The type argument can be either `global` or `guild` (defaults to guild).
         """
+
+        type = type or "guild"
+
+        if type.lower() not in ["global", "guild"]:
+            await ctx.send("Invalid avatar type. Please use `global` or `guild` (or nothing).")
+            return
 
         user = user or ctx.author
         embed_color = await self.config.embed_color() or user.color
         embed = discord.Embed(color=embed_color, title="Avatar")
 
         try:
-            # Attempt to fetch the avatar URL
-            avatar_url = user.avatar.url
+            avatar_url = user.guild_avatar.url if type.lower() == "guild" and user.guild_avatar else user.avatar.url
 
-            embed.set_author(name=f"{user.name} ~ {user.display_name}", icon_url=user.avatar.url)
+            embed.set_author(name=f"{user.name} ~ {user.display_name}", icon_url=avatar_url)
             embed.set_image(url=avatar_url)
+
         except discord.HTTPException:
             embed.description = "No avatar found for this user."
             await ctx.send(embed=embed)
