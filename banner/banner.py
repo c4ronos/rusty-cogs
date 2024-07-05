@@ -7,14 +7,13 @@ class Banner(commands.Cog):
 
     def __init__(self):
         self.config = Config.get_conf(self, identifier=245189443860)
-        default_global = {"embed_color": None}
+        default_global = {"embed_color": None, "use_embed": True}
         self.config.register_global(**default_global)
-
 
     @commands.hybrid_command(name="banner", description="Get a user's banner")
     @app_commands.describe(user="The user you wish to retrieve the banner of (optional)")
     @app_commands.guild_only()
-    async def banner(self, ctx: commands.Context, *, user: Optional[Union[discord.Member, discord.User]]) -> None:
+    async def banner(self, ctx: commands.Context, user: Optional[Union[discord.Member, discord.User]] = None) -> None:
         """Returns a user's banner as an embed.
 
         The user argument can be a user mention, nickname, username, or user ID.
@@ -23,36 +22,48 @@ class Banner(commands.Cog):
 
         user = user or ctx.author
         embed_color = await self.config.embed_color() or user.color
-        embed = discord.Embed(color=embed_color, title="Banner")
+        use_embed = await self.config.use_embed()
 
-        
         try:
-        # cannot get banner without fetch_user or get_user
+            # cannot get banner without fetch_user or get_user
             user = await ctx.bot.fetch_user(user.id)
+            banner_url = user.banner.url if user.banner else None
 
-            if user.banner:
-                banner_url = user.banner.url
-                embed.set_image(url=banner_url)
+            if use_embed:
+                embed = discord.Embed(color=embed_color, title="Banner")
+                if banner_url:
+                    embed.set_image(url=banner_url)
+                    embed.set_author(name=f"{user.name} ~ {user.display_name}", icon_url=user.avatar.url)
+                else:
+                    embed.description = "This user doesn't have a banner."
 
-                embed.set_author(name=f"{user.name} ~ {user.display_name}", icon_url=user.avatar.url)
-
+                if ctx.channel.permissions_for(ctx.guild.me).embed_links:
+                    await ctx.send(embed=embed)
+                else:
+                    await ctx.send("I do not have permission to send embeds in this channel.", ephemeral=True)
             else:
-                embed.description = "This user doesn't have a banner."
+                await ctx.send(banner_url or "This user doesn't have a banner.")
 
         except discord.HTTPException:
-            embed.description = "No banner found for this user."
+            if use_embed:
+                embed = discord.Embed(color=embed_color, description="No banner found for this user.")
+                await ctx.send(embed=embed)
+            else:
+                await ctx.send("No banner found for this user.")
 
-        if ctx.channel.permissions_for(ctx.guild.me).embed_links:
-            await ctx.send(embed=embed)
-        else:
-            await ctx.send("I do not have permission to send embeds in this channel.", ephemeral=True)
-
-
-    @commands.command(name="banner_embed", description="Embed color for banner (defaults to role color)")
+    @commands.group(name="banner_embed", description="Banner embed settings for bot owner")
     @commands.guild_only()
     @commands.is_owner()
-    async def banner_embed(self, ctx: commands.Context, color: str) -> None:
-        """Embed color for banner (defaults to role color)
+    async def banner_embed(self, ctx: commands.Context) -> None:
+        """Banner embed settings."""
+        if ctx.invoked_subcommand is None:
+            await ctx.send_help(ctx.command)
+
+    @banner_embed.command(name="color", description="Set embed color for banner (defaults to role color)")
+    @commands.guild_only()
+    @commands.is_owner()
+    async def banner_embed_color(self, ctx: commands.Context, color: str) -> None:
+        """Set embed color for banner (defaults to role color)
 
         Use a hex color code or 'clear' to reset to the default color.
         """
@@ -69,6 +80,17 @@ class Banner(commands.Cog):
             except ValueError:
                 await ctx.send("Invalid hex color code. Please provide a valid hex color code or 'clear'.")
 
+    @banner_embed.command(name="show", description="Enable or disable banner embed")
+    @commands.guild_only()
+    @commands.is_owner()
+    async def banner_embed_show(self, ctx: commands.Context, show: bool) -> None:
+        """Enable or disable banner embed.
+
+        Use `true` to enable embed or `false` to disable embed.
+        """
+
+        await self.config.use_embed.set(show)
+        await ctx.send(f"Banner embed has been {'enabled' if show else 'disabled'}.")
 
     async def red_delete_data_for_user(self, **kwargs) -> None:
         pass

@@ -7,7 +7,7 @@ class Avatar(commands.Cog):
 
     def __init__(self):
         self.config = Config.get_conf(self, identifier=524188088840)
-        default_global = {"embed_color": None}
+        default_global = {"embed_color": None, "use_embed": True}
         self.config.register_global(**default_global)
 
     @commands.hybrid_command(name="avatar", description="Get a user's avatar")
@@ -29,30 +29,34 @@ class Avatar(commands.Cog):
 
         user = user or ctx.author
         embed_color = await self.config.embed_color() or user.color
-        embed = discord.Embed(color=embed_color, title="Avatar")
+        use_embed = await self.config.use_embed()
+        avatar_url = user.guild_avatar.url if type.lower() == "guild" and user.guild_avatar else user.avatar.url
 
-        try:
-            avatar_url = user.guild_avatar.url if type.lower() == "guild" and user.guild_avatar else user.avatar.url
-
+        if use_embed:
+            embed = discord.Embed(color=embed_color, title="Avatar")
             embed.set_author(name=f"{user.name} ~ {user.display_name}", icon_url=avatar_url)
             embed.set_image(url=avatar_url)
 
-        except discord.HTTPException:
-            embed.description = "No avatar found for this user."
-            await ctx.send(embed=embed)
-            return
-
-        if ctx.channel.permissions_for(ctx.guild.me).embed_links:
-            await ctx.send(embed=embed)
+            if ctx.channel.permissions_for(ctx.guild.me).embed_links:
+                await ctx.send(embed=embed)
+            else:
+                await ctx.send("I do not have permission to send embeds in this channel.", ephemeral=True)
         else:
-            await ctx.send("I do not have permission to send embeds in this channel.", ephemeral=True)
+            await ctx.send(avatar_url)
 
-
-    @commands.command(name="avatar_embed", description="Embed color for avatar (defaults to role color)")
+    @commands.group(name="avatar_embed", description="Avatar embed settings for bot owner")
     @commands.guild_only()
     @commands.is_owner()
-    async def avatar_embed(self, ctx: commands.Context, color: str) -> None:
-        """Embed color for avatar (defaults to role color)
+    async def avatar_embed(self, ctx: commands.Context) -> None:
+        """Avatar embed settings."""
+        if ctx.invoked_subcommand is None:
+            await ctx.send_help(ctx.command)
+
+    @avatar_embed.command(name="color", description="Set embed color for avatar (defaults to role color)")
+    @commands.guild_only()
+    @commands.is_owner()
+    async def avatar_embed_color(self, ctx: commands.Context, color: str) -> None:
+        """Set embed color for avatar (defaults to role color)
 
         Use a hex color code or 'clear' to reset to the default color.
         """
@@ -69,6 +73,17 @@ class Avatar(commands.Cog):
             except ValueError:
                 await ctx.send("Invalid hex color code. Please provide a valid hex color code or 'clear'.")
 
+    @avatar_embed.command(name="show", description="Enable(true) or disable(false) avatar embed")
+    @commands.guild_only()
+    @commands.is_owner()
+    async def avatar_embed_show(self, ctx: commands.Context, show: bool) -> None:
+        """Enable or disable avatar embed.
+
+        Use `true` to enable embed or `false` to disable embed.
+        """
+
+        await self.config.use_embed.set(show)
+        await ctx.send(f"Avatar embed has been {'enabled' if show else 'disabled'}.")
 
     async def red_delete_data_for_user(self, **kwargs) -> None:
         pass
