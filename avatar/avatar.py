@@ -2,13 +2,15 @@ import discord
 from typing import Optional, Union
 from redbot.core import app_commands, commands, Config
 
+
 class Avatar(commands.Cog):
-    """Get a user's avatar."""
+    """Get a user's global/guild avatar."""
 
     def __init__(self):
         self.config = Config.get_conf(self, identifier=524188088840)
         default_global = {"embed_color": None, "use_embed": True}
         self.config.register_global(**default_global)
+
 
     @commands.hybrid_command(name="avatar", description="Get a user's avatar")
     @app_commands.describe(user="The user you wish to retrieve the avatar of (optional)")
@@ -22,7 +24,6 @@ class Avatar(commands.Cog):
         """
 
         type = type or "global"
-
         if type.lower() not in ["global", "guild"]:
             await ctx.send("Invalid avatar type. Please use `global` or `guild` (or nothing).")
             return
@@ -58,6 +59,7 @@ class Avatar(commands.Cog):
         """Avatar embed settings for bot owner."""
         return
 
+
     @avatar_embed.command(name="color", description="Set embed color for avatar (defaults to role color)")
     @commands.guild_only()
     @commands.is_owner()
@@ -79,6 +81,7 @@ class Avatar(commands.Cog):
             except ValueError:
                 await ctx.send("Invalid hex color code. Please provide a valid hex color code or 'clear'.")
 
+
     @avatar_embed.command(name="show", description="Enable(true) or disable(false) avatar embed")
     @commands.guild_only()
     @commands.is_owner()
@@ -90,6 +93,7 @@ class Avatar(commands.Cog):
 
         await self.config.use_embed.set(show)
         await ctx.send(f"Avatar embed has been {'enabled' if show else 'disabled'}.")
+
 
     async def red_delete_data_for_user(self, **kwargs) -> None:
         pass

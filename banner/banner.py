@@ -2,6 +2,7 @@ import discord
 from typing import Optional, Union
 from redbot.core import app_commands, commands, Config
 
+
 class Banner(commands.Cog):
     """Get a user's banner."""
 
@@ -9,6 +10,7 @@ class Banner(commands.Cog):
         self.config = Config.get_conf(self, identifier=245189443860)
         default_global = {"embed_color": None, "use_embed": True}
         self.config.register_global(**default_global)
+
 
     @commands.hybrid_command(name="banner", description="Get a user's banner")
     @app_commands.describe(user="The user you wish to retrieve the banner of (optional)")
@@ -51,12 +53,14 @@ class Banner(commands.Cog):
             else:
                 await ctx.send("No banner found for this user.")
 
+
     @commands.group(name="banner_embed", description="With this, you have the ability to change embed color or disable the embed altogether.")
     @commands.guild_only()
     @commands.is_owner()
     async def banner_embed(self, ctx: commands.Context) -> None:
         """Banner embed settings for bot owner."""
         return
+
 
     @banner_embed.command(name="color", description="Set embed color for banner (defaults to role color)")
     @commands.guild_only()
@@ -79,6 +83,7 @@ class Banner(commands.Cog):
             except ValueError:
                 await ctx.send("Invalid hex color code. Please provide a valid hex color code or 'clear'.")
 
+
     @banner_embed.command(name="show", description="Enable or disable banner embed")
     @commands.guild_only()
     @commands.is_owner()
@@ -90,6 +95,7 @@ class Banner(commands.Cog):
 
         await self.config.use_embed.set(show)
         await ctx.send(f"Banner embed has been {'enabled' if show else 'disabled'}.")
+
 
     async def red_delete_data_for_user(self, **kwargs) -> None:
         pass
