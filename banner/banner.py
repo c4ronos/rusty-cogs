@@ -51,13 +51,12 @@ class Banner(commands.Cog):
             else:
                 await ctx.send("No banner found for this user.")
 
-    @commands.group(name="banner_embed", description="Banner embed settings for bot owner")
+    @commands.group(name="banner_embed", description="With this, you have the ability to change embed color or disable the embed altogether.")
     @commands.guild_only()
     @commands.is_owner()
     async def banner_embed(self, ctx: commands.Context) -> None:
-        """Banner embed settings."""
-        if ctx.invoked_subcommand is None:
-            await ctx.send_help(ctx.command)
+        """Banner embed settings for bot owner."""
+        return
 
     @banner_embed.command(name="color", description="Set embed color for banner (defaults to role color)")
     @commands.guild_only()

@@ -18,10 +18,10 @@ class Avatar(commands.Cog):
         """Returns a user's global/guild avatar as an embed.
 
         > The user argument can be a user mention, nickname, username, or user ID. (optional)
-        > The type argument can be either `global` or `guild` (defaults to guild).
+        > The type argument can be either `global` or `guild` (defaults to global).
         """
 
-        type = type or "guild"
+        type = type or "global"
 
         if type.lower() not in ["global", "guild"]:
             await ctx.send("Invalid avatar type. Please use `global` or `guild` (or nothing).")
@@ -30,7 +30,14 @@ class Avatar(commands.Cog):
         user = user or ctx.author
         embed_color = await self.config.embed_color() or user.color
         use_embed = await self.config.use_embed()
-        avatar_url = user.guild_avatar.url if type.lower() == "guild" and user.guild_avatar else user.avatar.url
+
+        if type.lower() == "global":
+            avatar_url = user.avatar.url
+        else:
+            if user.guild_avatar:
+                avatar_url = user.guild_avatar.url
+            else:
+                avatar_url = user.avatar.url
 
         if use_embed:
             embed = discord.Embed(color=embed_color, title="Avatar")
@@ -44,13 +51,12 @@ class Avatar(commands.Cog):
         else:
             await ctx.send(avatar_url)
 
-    @commands.group(name="avatar_embed", description="Avatar embed settings for bot owner")
+    @commands.group(name="avatar_embed", description="With this, you have the ability to change embed color or disable the embed altogether.")
     @commands.guild_only()
     @commands.is_owner()
     async def avatar_embed(self, ctx: commands.Context) -> None:
-        """Avatar embed settings."""
-        if ctx.invoked_subcommand is None:
-            await ctx.send_help(ctx.command)
+        """Avatar embed settings for bot owner."""
+        return
 
     @avatar_embed.command(name="color", description="Set embed color for avatar (defaults to role color)")
     @commands.guild_only()
