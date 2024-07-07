@@ -14,6 +14,4 @@
 
 # STUFF
 ---
-➥ For the sake of simplicity, the cog has limited features as of now. If i feel like it, i will add features to annoy the users in gulag. (perhaps send a random insult every hour)
-<br/> <br/>
-➥ If you do plan on doing so manually, i would suggest using `freezenick` from [Dav-Cogs' nicknamer](https://github.com/Dav-Git/Dav-Cogs) or `dps` (dont ping staff) from [sravan-cogs](https://github.com/sravan1946/sravan-cogs)
+➥ For the sake of simplicity, the cog has limited features as of now. If i feel like it, i will add features to annoy the users in gulag.
