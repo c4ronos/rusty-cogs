@@ -1,5 +1,5 @@
 import discord
-from redbot.core import commands, Config, checks
+from redbot.core import app_commands, commands, Config
 from redbot.core.bot import Red
 import asyncio
 
@@ -14,22 +14,28 @@ class VoteMod(commands.Cog):
         self.config.register_guild(required_votes=5)
         self.active_votes = {}
 
-    @commands.hybrid_command(name="voteban", description="Start a vote to ban a user.")
-    @checks.admin_or_permissions(administrator=True)
+
+    @commands.hybrid_command(name="voteban")
+    @app_commands.describe(member="The member to be banned")
+    @commands.has_permissions(administrator=True)
     @commands.guild_only()
     async def voteban(self, ctx: commands.Context, member: discord.Member):
         """Start a vote to ban a user."""
         await self.start_vote(ctx, member, "ban")
 
-    @commands.hybrid_command(name="votekick", description="Start a vote to kick a user.")
-    @checks.admin_or_permissions(administrator=True)
+
+    @commands.hybrid_command(name="votekick")
+    @app_commands.describe(member="The member to be kicked")
+    @commands.has_permissions(administrator=True)
     @commands.guild_only()
     async def votekick(self, ctx: commands.Context, member: discord.Member):
         """Start a vote to kick a user."""
         await self.start_vote(ctx, member, "kick")
 
-    @commands.hybrid_command(name="voteset", description="Set the number of votes required for votemod.")
-    @checks.admin_or_permissions(administrator=True)
+
+    @commands.hybrid_command(name="voteset")
+    @app_commands.describe(votes="The number of votes required for votemod")
+    @commands.has_permissions(administrator=True)
     @commands.guild_only()
     async def voteset(self, ctx: commands.Context, votes: int):
         """Set the number of votes required for votemod."""
@@ -70,6 +76,7 @@ class VoteMod(commands.Cog):
         await asyncio.sleep(300)  # 5 minutes
         if msg.id in self.active_votes:
             await self.end_vote(msg.id)
+
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):

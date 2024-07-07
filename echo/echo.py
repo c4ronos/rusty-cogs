@@ -8,7 +8,7 @@ class Echo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.hybrid_command(name="echo", description="Makes the bot say something in the specified channel.")
+    @commands.hybrid_command(name="echo")
     @commands.guild_only()
     @commands.admin_or_permissions(administrator=True)
     @app_commands.describe(

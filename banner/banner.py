@@ -4,7 +4,7 @@ from redbot.core import app_commands, commands, Config
 
 
 class Banner(commands.Cog):
-    """Get a user's banner."""
+    """Get a user's banner in an embed, with settings to manage the embed."""
 
     def __init__(self):
         self.config = Config.get_conf(self, identifier=245189443860)
@@ -12,14 +12,14 @@ class Banner(commands.Cog):
         self.config.register_global(**default_global)
 
 
-    @commands.hybrid_command(name="banner", description="Get a user's banner")
+    @commands.hybrid_command(name="banner")
     @app_commands.describe(user="The user you wish to retrieve the banner of (optional)")
-    @app_commands.guild_only()
+    @commands.guild_only()
     async def banner(self, ctx: commands.Context, user: Optional[Union[discord.Member, discord.User]] = None) -> None:
         """Returns a user's banner as an embed.
 
-        The user argument can be a user mention, nickname, username, or user ID.
-        Defaults to the requester when no argument is supplied.
+        > The user argument can be a user mention, nickname, username, or user ID.
+        > Defaults to the requester when no argument is supplied.
         """
 
         user = user or ctx.author
@@ -54,21 +54,24 @@ class Banner(commands.Cog):
                 await ctx.send("No banner found for this user.")
 
 
-    @commands.group(name="banner_embed", description="With this, you have the ability to change embed color or disable the embed altogether.")
-    @commands.guild_only()
+    @commands.group(name="banner_embed")
     @commands.is_owner()
+    @commands.guild_only()
     async def banner_embed(self, ctx: commands.Context) -> None:
-        """Banner embed settings for bot owner."""
+        """Banner embed settings for bot owner.
+        
+        > With this, you have the ability to change embed color or disable the embed altogether.
+        """
         return
 
 
-    @banner_embed.command(name="color", description="Set embed color for banner (defaults to role color)")
-    @commands.guild_only()
+    @banner_embed.command(name="color")
     @commands.is_owner()
+    @commands.guild_only()
     async def banner_embed_color(self, ctx: commands.Context, color: str) -> None:
         """Set embed color for banner (defaults to role color)
 
-        Use a hex color code or 'clear' to reset to the default color.
+        > Use a hex color code or 'clear' to reset to the default color.
         """
 
         if color.lower() == "clear":
@@ -84,13 +87,13 @@ class Banner(commands.Cog):
                 await ctx.send("Invalid hex color code. Please provide a valid hex color code or 'clear'.")
 
 
-    @banner_embed.command(name="show", description="Enable or disable banner embed")
-    @commands.guild_only()
+    @banner_embed.command(name="show")
     @commands.is_owner()
+    @commands.guild_only()
     async def banner_embed_show(self, ctx: commands.Context, show: bool) -> None:
         """Enable or disable banner embed.
 
-        Use `true` to enable embed or `false` to disable embed.
+        > Use `true` to enable embed or `false` to disable embed.
         """
 
         await self.config.use_embed.set(show)
