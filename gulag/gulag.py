@@ -132,7 +132,7 @@ class Gulag(commands.Cog):
 
     @gulagset.command(name="clear")
     async def clear_gulag(self, ctx: commands.Context):
-        """Resets and deletes the gulag role and channel."""
+        """Resets the gulag role and channel."""
         guild = ctx.guild
         guild_config = self.config.guild(guild)
         gulag_role_id = await guild_config.gulag_role()
@@ -144,10 +144,6 @@ class Gulag(commands.Cog):
 
         gulag_role = guild.get_role(gulag_role_id)
         gulag_channel = guild.get_channel(gulag_channel_id)
-        if gulag_role:
-            await gulag_role.delete()
-        if gulag_channel:
-            await gulag_channel.delete()
 
         await guild_config.gulag_role.set(None)
         await guild_config.gulag_channel.set(None)
