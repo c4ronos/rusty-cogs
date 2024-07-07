@@ -20,13 +20,6 @@ class Gulag(commands.Cog):
         gulag_role_id = await guild_config.gulag_role()
         gulag_channel_id = await guild_config.gulag_channel()
 
-        if not gulag_role_id:
-            await ctx.send("Gulag role is not configured for this guild.")
-            return
-        if not gulag_channel_id:
-            await ctx.send("Gulag channel is not configured for this guild.")
-            return
-
         gulag_role = ctx.guild.get_role(gulag_role_id)
         if not gulag_role:
             await ctx.send("Gulag role not found.")
@@ -37,20 +30,15 @@ class Gulag(commands.Cog):
             return
 
         # Permission checks
-        if member.top_role >= ctx.author.top_role:
-            await ctx.send("You do not have sufficient permissions to gulag this member.")
-            return
-
         bot_member = ctx.guild.get_member(ctx.bot.user.id)
-        if not bot_member.top_role > member.top_role:
-            await ctx.send("The bot does not have sufficient permissions to gulag this member.")
+        if not bot_member.top_role > member.top_role or member.top_role >= ctx.author.top_role:
+            await ctx.send("Insufficient permissions (bot/author heirarchy)")
             return
 
-        removable_roles = [role for role in member.roles[1:] if role.id != member.guild.premium_subscriber_role.id]  # Exclude @everyone
+        removable_roles = [role for role in member.roles[1:] if role.id != member.guild.premium_subscriber_role.id]  # Exclude @everyone and booster
         self.original_roles[member.id] = removable_roles
-        await member.remove_roles(*self.original_roles[member.id])
+        await member.remove_roles(*removable_roles)
         await member.add_roles(gulag_role)
-        await self.update_channel_permissions(ctx.guild, gulag_role, gulag_channel)
         await ctx.send(f"{member.mention} has been sent to the gulag.")
         await gulag_channel.send(f"{member.mention} [-](https://tenor.com/view/gulag-survive-welcome-to-the-gulag-gif-27052296)")
 
@@ -64,12 +52,8 @@ class Gulag(commands.Cog):
         guild_config = self.config.guild(ctx.guild)
         gulag_role_id = await guild_config.gulag_role()
 
-        if not gulag_role_id:
-            await ctx.send("Gulag role is not configured for this guild.")
-            return
-
         gulag_role = ctx.guild.get_role(gulag_role_id)
-        if not gulag_role:
+        if not gulag_role_id:
             await ctx.send("Gulag role not found.")
             return
 
@@ -81,8 +65,7 @@ class Gulag(commands.Cog):
                 del self.original_roles[member.id]
                 await ctx.send(f"{member.mention} has been released from the gulag.")
             else:
-                # Handle the case where the member is in the gulag but original roles are missing
-                # You might want to log this or handle it differently
+                # Handle case where the member is in the gulag but original roles are missing
                 await ctx.send(f"An error occurred while releasing {member.display_name} from the gulag.")
         else:
             await ctx.send(f"{member.display_name} is not currently in the gulag.")
