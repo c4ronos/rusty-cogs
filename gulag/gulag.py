@@ -36,7 +36,11 @@ class Gulag(commands.Cog):
             await ctx.send("Gulag channel not found.")
             return
 
-        # Check if the bot has the required permissions
+        # Permission checks
+        if member.top_role >= ctx.author.top_role:
+            await ctx.send("You do not have sufficient permissions to gulag this member.")
+            return
+
         bot_member = ctx.guild.get_member(ctx.bot.user.id)
         if not bot_member.top_role > member.top_role:
             await ctx.send("The bot does not have sufficient permissions to gulag this member.")
