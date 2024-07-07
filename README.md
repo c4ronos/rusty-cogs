@@ -1,4 +1,4 @@
-## Disclaimer ⇝ Install these cogs at your own risk. <br />
+## NOTE: You will find a dedicated README (guide) in the cogs' respective folders.
 ---
 <!-- UP  -->
 <p align="center">
@@ -30,6 +30,7 @@ load cog
 | [Avatar](avatar/)      | Stable      | Returns a user's avatar in an embed                         |
 | [Banner](banner/)      | Stable      | Returns a user's banner in an embed                         |
 | [Echo](echo/)          | Stable      | Makes the bot say something in the specified channel.       |
+| [Gulag](gulag/)        | Beta        | Gulag users by restricting them to a channel.               |
 | [VoteMod](votemod/)    | Stable      | Vote-based moderation command for banning / kicking users.  |
 | [WaifuIM](waifuim/)    | Stable      | Get images from waifu.im api (credits: PhantomNimbi)        |
 |⠀   ⠀                   |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀                                         |
@@ -37,5 +38,5 @@ load cog
 # Contact⠀✿
 ---
 ➥ dm me - `1eus` or `0eus`
-<br /> <br/>
+<br/> <br/>
 ➥ ping me in [#support_othercogs](https://discord.com/channels/240154543684321280/240212783503900673) in the [Red - Cog Support](https://discord.gg/red-cog-support-240154543684321280) server
