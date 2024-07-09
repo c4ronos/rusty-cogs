@@ -32,12 +32,12 @@ class Avatar(commands.Cog):
         use_embed = await self.config.use_embed()
 
         if type.lower() == "global":
-            avatar_url = user.avatar.url
+            avatar_url = user.display_avatar.url
         else:
             if user.guild_avatar:
                 avatar_url = user.guild_avatar.url
             else:
-                avatar_url = user.avatar.url
+                avatar_url = user.display_avatar.url
 
         if use_embed:
             embed = discord.Embed(color=embed_color, title="Avatar")
