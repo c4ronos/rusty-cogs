@@ -1,5 +1,5 @@
 import discord
-from typing import Optional, Union
+from typing import Optional, Union, Literal
 from redbot.core import app_commands, commands, Config
 
 
@@ -15,17 +15,12 @@ class Avatar(commands.Cog):
     @commands.hybrid_command(name="avatar")
     @app_commands.describe(user="The user you wish to retrieve the avatar of (optional)", type="Whether to return global avatar or guild (optional)")
     @commands.guild_only()
-    async def avatar(self, ctx: commands.Context, user: Optional[Union[discord.Member, discord.User]] = None, type: Optional[str] = None) -> None:
+    async def avatar(self, ctx: commands.Context, user: Optional[Union[discord.Member, discord.User]] = None, type: Literal["global", "guild"] = "global") -> None:
         """Returns a user's global/guild avatar as an embed.
 
         > The user argument can be a user mention, nickname, username, or user ID. (optional)
         > The type argument can be either `global` or `guild` (defaults to global).
         """
-
-        type = type or "global"
-        if type.lower() not in ["global", "guild"]:
-            await ctx.send("Invalid avatar type. Please use `global` or `guild` (or nothing).")
-            return
 
         user = user or ctx.author
         embed_color = await self.config.embed_color() or user.color
