@@ -20,6 +20,7 @@ class Gulag(commands.Cog):
         gulag_role_id = await guild_config.gulag_role()
         gulag_channel_id = await guild_config.gulag_channel()
 
+        # Checks
         gulag_role = ctx.guild.get_role(gulag_role_id)
         if not gulag_role:
             await ctx.send("Gulag role not found.")
@@ -29,13 +30,12 @@ class Gulag(commands.Cog):
             await ctx.send("Gulag channel not found.")
             return
 
-        # Permission checks
         bot_member = ctx.guild.get_member(ctx.bot.user.id)
         if not bot_member.top_role > member.top_role or member.top_role >= ctx.author.top_role:
             await ctx.send("Insufficient permissions (bot/author heirarchy)")
             return
 
-        removable_roles = [role for role in member.roles[1:] if role.id != member.guild.premium_subscriber_role.id]  # Exclude @everyone and booster
+        removable_roles = [role for role in member.roles[1:] if role.id != member.guild.premium_subscriber_role.id]
         self.original_roles[member.id] = removable_roles
         await member.remove_roles(*removable_roles)
         await member.add_roles(gulag_role)
@@ -58,15 +58,14 @@ class Gulag(commands.Cog):
             return
 
         if gulag_role in member.roles:
-            # Member is in the gulag
+            await member.remove_roles(gulag_role)
+            await ctx.send(f"{member.mention} has been released from the gulag.")
+
             if member.id in self.original_roles:
-                await member.remove_roles(gulag_role)
                 await member.add_roles(*self.original_roles[member.id], atomic=True)
                 del self.original_roles[member.id]
-                await ctx.send(f"{member.mention} has been released from the gulag.")
-            else:
-                # Handle case where the member is in the gulag but original roles are missing
-                await ctx.send(f"An error occurred while releasing {member.display_name} from the gulag.")
+            else:           # Member not in bot's list
+                await ctx.send(f"User's original roles were not found and cannot be added back.\nYou will have to add them manually.")
         else:
             await ctx.send(f"{member.display_name} is not currently in the gulag.")
 
@@ -96,22 +95,20 @@ class Gulag(commands.Cog):
         guild = ctx.guild
         gulag_channel_id = await self.config.guild(guild).gulag_channel()
 
-        if not gulag_channel_id:
+        gulag_channel = guild.get_channel(gulag_channel_id)
+        if not gulag_channel:
             await ctx.send("Gulag channel is not configured for this guild.")
             return
-
         if not role:
             await ctx.send("Role not found.")
             return
 
-        gulag_channel = guild.get_channel(gulag_channel_id)
-        if not gulag_channel:
-            await ctx.send("Gulag channel not found.")
-            return
-
-        # Set permissions for gulag role in gulag channel
-        await gulag_channel.set_permissions(role, read_messages=True, send_messages=True)
-        await self.update_channel_permissions(guild, role, gulag_channel)
+        
+        # Set permissions across server after channel and role are set.
+        try:
+            await self.update_channel_permissions(guild, role, gulag_channel)
+        except Exception:
+            await ctx.send("Error. Please try again.")
 
         await self.config.guild(guild).gulag_role.set(role.id)
         await ctx.send(f"Gulag role configured as {role.name}.")
@@ -125,10 +122,6 @@ class Gulag(commands.Cog):
         gulag_role_id = await guild_config.gulag_role()
         gulag_channel_id = await guild_config.gulag_channel()
 
-        if not gulag_role_id and not gulag_channel_id:
-            await ctx.send("Gulag role and channel is not configured for this guild.")
-            return
-
         gulag_role = guild.get_role(gulag_role_id)
         gulag_channel = guild.get_channel(gulag_channel_id)
 
@@ -141,5 +134,7 @@ class Gulag(commands.Cog):
         """Updates the channel permissions for a gulag role."""
         for channel in guild.channels:
             if channel != gulag_channel:
-                await channel.set_permissions(gulag_role, read_messages=False, send_messages=False)
+                await channel.set_permissions(gulag_role, view_channel=False, send_messages=False)
+
         await gulag_channel.set_permissions(guild.default_role, view_channel=False)
+        await gulag_channel.set_permissions(gulag_role, view_channel=True, send_messages=True)
