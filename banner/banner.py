@@ -18,8 +18,7 @@ class Banner(commands.Cog):
     async def banner(self, ctx: commands.Context, user: Optional[Union[discord.Member, discord.User]] = None) -> None:
         """Returns a user's banner as an embed.
 
-        > The user argument can be a user mention, nickname, username, or user ID.
-        > Defaults to the requester when no argument is supplied.
+        > optional - [user] can be a user mention, username, or user ID.
         """
 
         user = user or ctx.author
