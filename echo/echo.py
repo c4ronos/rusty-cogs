@@ -10,7 +10,7 @@ class Echo(commands.Cog):
 
     @commands.hybrid_command(name="echo")
     @commands.guild_only()
-    @commands.admin_or_permissions(administrator=True)
+    @commands.has_permissions(administrator=True)
     @app_commands.describe(
         message="Input Message",
         channel="Input Channel"
