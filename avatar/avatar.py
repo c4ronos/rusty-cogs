@@ -18,8 +18,8 @@ class Avatar(commands.Cog):
     async def avatar(self, ctx: commands.Context, user: Optional[Union[discord.Member, discord.User]], type: Optional[Literal["global", "guild", "deco"]]) -> None:
         """Returns a user's avatar assets as an embed. (see help)
 
-        > The user argument can be a user mention, nickname, username, or user ID. (optional)
-        > The type argument can be either `global` or `guild` or `decoration` (defaults to global).
+        > optional - [user] can be a user mention, username, or user ID.
+        > optional - [type] can be either `global` | `guild` | `deco` [default=global].
         """
 
         user = user or ctx.author
