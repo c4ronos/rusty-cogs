@@ -13,7 +13,7 @@ class Avatar(commands.Cog):
 
 
     @commands.hybrid_command(name="avatar")
-    @app_commands.describe(user="The user you wish to retrieve the avatar of (optional)", type="Whether to return global avatar or guild (optional)")
+    @app_commands.describe(user="The user you wish to retrieve the avatar of (optional)", type="Global avatar or guild avatar or avatar decoration (optional)")
     @commands.guild_only()
     async def avatar(self, ctx: commands.Context, user: Optional[Union[discord.Member, discord.User]], type: Optional[Literal["global", "guild", "deco"]]) -> None:
         """Returns a user's avatar assets as an embed. (see help)
