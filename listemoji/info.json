@@ -2,7 +2,7 @@
 	"author": ["kennnyshiwa"],
 	"description": "List all of your servers emojis",
 	"hidden": false,
-	"install_msg": "Thanks for installing, have fun.\n\nUse `[p]listemoji` or `[p]`listemoji true",
+	"install_msg": "Thanks for installing, have fun.\n\nUse `[p]listemoji` or `[p]listemoji true`",
 	"short": "List all of your servers emojis",
 	"tags": ["bots","emojis"],
 	"type": "COG"
