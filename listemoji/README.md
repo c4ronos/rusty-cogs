@@ -8,4 +8,4 @@
 ---
 ➥ Use `listemoji` to display the emojis as {emoji} → {emoji_name}
 <br/> <br/>
-➥ Use `listemoji` to display the emojis as {emoji} → {emoji_name+id}
+➥ Use `listemoji true` to display the emojis as {emoji} → {emoji_name+id}
