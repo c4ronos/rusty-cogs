@@ -21,12 +21,12 @@ class ListEmoji(commands.Cog):
         description = f"Emojis for {ctx.guild.name}"
         if not ids:
             text = f"{description}\n\n" + "\n".join(
-                [f"{emoji} → `:{emoji.name}:`" for emoji in ctx.guild.emojis]
+                [f"{emoji} ⟶ `:{emoji.name}:`" for emoji in ctx.guild.emojis]
             )
         else:
             text = f"{description}\n\n" + "\n".join(
                 [
-                    f"{emoji} → `<{'a' if emoji.animated else ''}:{emoji.name}:{emoji.id}>`"
+                    f"{emoji} ⟶ `<{'a' if emoji.animated else ''}:{emoji.name}:{emoji.id}>`"
                     for emoji in ctx.guild.emojis
                 ]
             )
