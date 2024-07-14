@@ -8,6 +8,6 @@
 
 # USAGE
 ---
-➥ [ OPTIONAL ] Start by setting up the no. of votes required using `voteset` command (skip if you're happy if the default number). I suggest changing this based on the number of members you have in your server.
+➥ [ OPTIONAL ] Start by setting up the no. of votes required using `voteset` command (skip if you're happy if the default number i.e. `5`). I suggest changing this based on the number of members you have in your server.
 <br/> <br/>
 ➥ After setup simply run `voteban <user>` or `votekick <user>`.
