@@ -30,9 +30,9 @@ load cog
 | [Banner](banner/)      | Stable      | Returns a user's banner in an embed                         |
 | [Echo](echo/)          | Stable      | Makes the bot say something in the specified channel.       |
 | [Gulag](gulag/)        | Beta        | Gulag users by restricting them to a channel.               |
-| [ListEmoji](listemoji/)| Stable      | Get a list of emojis in your server. | Kennnyshiwa          |
+| [ListEmoji](listemoji/)| Stable      | Get a list of emojis in your server. ~ Kennnyshiwa          |
 | [VoteMod](votemod/)    | Stable      | Vote-based moderation command for banning / kicking users.  |
-| [WaifuIM](waifuim/)    | Stable      | Get images from waifu.im api | PhantomNimbi                 |
+| [WaifuIM](waifuim/)    | Stable      | Get images from waifu.im api ~ PhantomNimbi                 |
 |⠀   ⠀                   |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀                                         |
 
 # Contact⠀✿
