@@ -13,4 +13,5 @@
 # NOTE
 ---
 ➥ The title `Emojis for: {server_name}` is sent as a separate message so that it can be easily deleted if you prefer not to have it.
+<br/> <br/>
 ➥ To prevent rate limits, bot waits 0.3 seconds before sending the next page of emojis.
