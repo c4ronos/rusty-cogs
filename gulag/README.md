@@ -12,6 +12,6 @@
 <br/> <br/>
 ➥ `gulag` will take away all roles (assuming bot's role is higher than those roles) and give the gulag role to member. `bail` will take away gulag role and give back the roles the member previously had.
 
-# STUFF
+# NOTE
 ---
 ➥ For the sake of simplicity, the cog has limited features as of now. If i feel like it, i will add features to annoy the users in gulag.

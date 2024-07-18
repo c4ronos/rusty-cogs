@@ -10,6 +10,6 @@
 <br/> <br/>
 ➥ [user] is an optional argument. If you simply run `banner`, it will return your own banner.
 
-# STUFF
+# NOTE
 ---
 ➥ Currently theres no way to choose between guild/global banner of a user. I will add the option when the functionality to do so comes up.
