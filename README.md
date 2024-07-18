@@ -1,13 +1,10 @@
 ## NOTE: You will find a dedicated README (guide) in the cogs' respective folders.
 ---
 <p align="center">
-  <a href="https://github.com/katanadotnet/Katana-Cogs">
+  <a href=".banner/">
     <img src=".banner/repo_banner.png" alt="Repository Banner"/>
   </a>
-  <br/> <br/>
   <h1 align="center"></h1>
-  <h2><p align="center">Cogs for Red Discord Bot v3</h2>
-      <p align="center">
 </p>
 
 # Installation⠀✿
