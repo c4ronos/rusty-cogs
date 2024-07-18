@@ -8,7 +8,7 @@ from redbot.core import commands
 from redbot.core.bot import Red
 from redbot.core.utils.chat_formatting import box
 
-embed_icon: Final[str] = 'https://i.pinimg.com/564x/5e/c6/24/5ec624ae620ff578719329b4a40730b3.jpg'
+embed_icon: Final[str] = 'https://i.pinimg.com/564x/f9/af/85/f9af851ee1dfb82be163fe9f7266b13d.jpg'
 footer_text = 'Powered by Waifu.IM API'
 
 class WaifuIM(commands.Cog):
