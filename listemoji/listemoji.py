@@ -38,5 +38,5 @@ class ListEmoji(commands.Cog):
         await ctx.send(f"Emojis for: **{ctx.guild.name}**\n_ _")
 
         for page in pagify(text):
-            #time.sleep(0.5)             # prevent rate limit in servers with lots of emojis
+            time.sleep(0.3)             # prevent rate limit in servers with lots of emojis
             await ctx.send(page)
