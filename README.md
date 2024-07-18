@@ -4,7 +4,7 @@
   <a href=".banner/">
     <img src=".banner/repo_banner.png" alt="Repository Banner"/>
   </a>
-  <h1 align="center"></h1>
+  <h1></h1>
 </p>
 
 # Installation⠀✿
