@@ -1,6 +1,5 @@
 ## NOTE: You will find a dedicated README (guide) in the cogs' respective folders.
 ---
-<!-- UP  -->
 <p align="center">
   <a href="https://github.com/katanadotnet/Katana-Cogs">
     <img src=".banner/repo_banner.png" alt="Repository Banner"/>
@@ -31,9 +30,9 @@ load cog
 | [Banner](banner/)      | Stable      | Returns a user's banner in an embed                         |
 | [Echo](echo/)          | Stable      | Makes the bot say something in the specified channel.       |
 | [Gulag](gulag/)        | Beta        | Gulag users by restricting them to a channel.               |
-| [ListEmoji](listemoji/)| Stable      | Get a list of emojis in your server. (credits: Kennnyshiwa) |
+| [ListEmoji](listemoji/)| Stable      | Get a list of emojis in your server. | Kennnyshiwa          |
 | [VoteMod](votemod/)    | Stable      | Vote-based moderation command for banning / kicking users.  |
-| [WaifuIM](waifuim/)    | Stable      | Get images from waifu.im api (credits: PhantomNimbi)        |
+| [WaifuIM](waifuim/)    | Stable      | Get images from waifu.im api | PhantomNimbi                 |
 |⠀   ⠀                   |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀                                         |
 
 # Contact⠀✿
