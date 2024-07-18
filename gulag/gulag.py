@@ -1,5 +1,5 @@
-from redbot.core import app_commands, commands, Config
 import discord
+from redbot.core import app_commands, commands, Config
 
 
 class Gulag(commands.Cog):
@@ -31,7 +31,7 @@ class Gulag(commands.Cog):
             return
 
         bot_member = ctx.guild.get_member(ctx.bot.user.id)
-        if not bot_member.top_role > member.top_role or member.top_role >= ctx.author.top_role:
+        if member.top_role >= bot_member.top_role or member.top_role >= ctx.author.top_role:
             await ctx.send("Insufficient permissions (bot/author heirarchy)")
             return
 
@@ -65,7 +65,7 @@ class Gulag(commands.Cog):
                 await member.add_roles(*self.original_roles[member.id], atomic=True)
                 del self.original_roles[member.id]
             else:           # Member not in bot's list
-                await ctx.send(f"User's original roles were not found and cannot be added back.\nYou will have to add them manually.")
+                await ctx.send(f"User's original roles were not found and cannot be added back. You will have to add them manually.")
         else:
             await ctx.send(f"{member.display_name} is not currently in the gulag.")
 

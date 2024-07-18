@@ -9,25 +9,19 @@ class Echo(commands.Cog):
         self.bot = bot
 
     @commands.hybrid_command(name="echo")
-    @commands.guild_only()
     @commands.has_permissions(administrator=True)
-    @app_commands.describe(
-        message="Input Message",
-        channel="Input Channel"
-    )
+    @app_commands.describe(message="Input Message", channel="Input Channel")
+    @commands.guild_only()
     async def echo(self, ctx: commands.Context, channel: Optional[discord.TextChannel] = None, *, message: str):
         """Makes the bot say something in the specified channel."""
 
-        # Send an ephemeral confirmation
+        # Send the message without letting others know who ran the command
         if ctx.interaction:
             await ctx.send("Sent!", ephemeral=True)
         else:
             await ctx.message.add_reaction("✅")
 
-        # Determine the channel to send the message to
         target_channel = channel or ctx.channel
-
-        # Send the echoed message
         await target_channel.send(message)
 
     async def red_delete_data_for_user(self, **kwargs):

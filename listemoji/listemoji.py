@@ -18,10 +18,12 @@ class ListEmoji(commands.Cog):
     @checks.admin_or_permissions(manage_emojis=True)
     async def listemoji(self, ctx: commands.Context, ids: bool = False):
         """Lists all available emojis in a server, perfect for an emoji channel"""
-        description = f"Emojis for {ctx.guild.name}"
+        description = f"Emojis for: **{ctx.guild.name}**"
         if not ids:
             text = f"{description}\n\n" + "\n".join(
-                [f"{emoji} ⟶ `:{emoji.name}:`" for emoji in ctx.guild.emojis]
+                [
+                    f"{emoji} ⟶ `:{emoji.name}:`" for emoji in ctx.guild.emojis
+                ]
             )
         else:
             text = f"{description}\n\n" + "\n".join(
@@ -30,5 +32,6 @@ class ListEmoji(commands.Cog):
                     for emoji in ctx.guild.emojis
                 ]
             )
+
         for page in pagify(text):
             await ctx.send(page)
