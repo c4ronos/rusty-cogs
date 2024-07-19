@@ -1,3 +1,6 @@
+### Supports slash commands
+<h1></h1>
+
 # INFO
 ---
 ➥ Have opposing views on removing a user from the server? This cog solves that using a vote system.

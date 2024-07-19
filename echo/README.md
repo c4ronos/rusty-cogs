@@ -1,3 +1,6 @@
+### Supports slash commands
+<h1></h1>
+
 # INFO
 ---
 ➥ This cog is heavily inspired by Carl-bot's `echo`

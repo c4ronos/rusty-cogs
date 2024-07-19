@@ -1,6 +1,8 @@
 !! Type `avatar [user] deco` to check out a user's avatar decoration !!
+<br/><br/>
+### Supports slash commands
+<h1></h1>
 
----
 # INFO
 ---
 ➥ Avatar cog that matches the aesthetic and functions of my banner cog.

@@ -1,3 +1,6 @@
+### Supports slash commands
+<h1></h1>
+
 # INFO
 ---
 ➥ Gulag cog works by stripping away all permissions of the specified user; and restricting them to a single channel.

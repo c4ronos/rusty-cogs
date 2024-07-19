@@ -1,3 +1,6 @@
+### Supports slash commands
+<h1></h1>
+
 # INFO
 ---
 ➥ Banner is something just like avatar, yet i haven't so far seen a cog to retrieve user banner. But look no further; this is the only cog for retrieving user banners you will ever need.

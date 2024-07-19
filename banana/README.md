@@ -1,3 +1,6 @@
+### Supports slash commands
+<h1></h1>
+
 # INFO
 ---
 ➥ This is a cog to show someone their banana or eat theirs.

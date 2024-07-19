@@ -1,5 +1,9 @@
 # Fork of WaifuIM made by PhantomNimbi (ShitShowCogs)
 ### NSFW Commands can only be used in NSFW channels.
+<h1></h1>
+
+### Supports slash commands
+<h1></h1>
 
 # Commands:
 
