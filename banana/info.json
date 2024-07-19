@@ -1,0 +1,12 @@
+{
+    "author": ["rusty-man"],
+    "description": "Cog to show someone your banana or eat theirs",
+    "install_msg": "Thanks for installing `banana`. See `[p]help Banana` for details.\n\nVisit [-this-](<https://github.com/rusty-man/rusty-cogs/tree/main/banana>) for a dedicated guide.",
+    "short": "Show someone your banana or eat theirs",
+    "hidden": false,
+    "disabled": false,
+    "required_cogs": {},
+    "requirements": [],
+    "tags": ["fun", "image", "banana"],
+    "type": "COG"
+  }
