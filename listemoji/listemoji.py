@@ -19,7 +19,7 @@ class ListEmoji(commands.Cog):
     @checks.has_permissions(manage_emojis=True)
     async def listemoji(self, ctx: commands.Context, ids: bool = False):
         """Lists all available emojis in a server, perfect for an emoji channel"""
-        description = f"Emojis for: **{ctx.guild.name}**"
+
         if not ids:
             text = "\n".join(
                 [
