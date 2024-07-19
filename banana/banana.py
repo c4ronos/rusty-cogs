@@ -13,7 +13,7 @@ class Banana(commands.Cog):
     async def banana(self, ctx: commands.Context, user: discord.Member, action: Literal["show","eat"]):
         """Show someone your banana or eat theirs
         
-        > example: `banana 792305160149 show`
+        > Example: `banana 792305160149 show`
         """
 
         embed_description = "Should we be surprised? 🤔"
