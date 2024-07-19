@@ -8,7 +8,7 @@
 ---
 ➥ `banana <user> <action>`.
 <br/> <br/>
-➥ Both `<user>` and `<action>` are required arguments. `<action>` can be `show` or `eat`.
+➥ Both \<user> and \<action> are required arguments. \<action> can be `show` or `eat`.
 <br/> <br/>
 ➥ Use slash commands to prevent clutter
 
