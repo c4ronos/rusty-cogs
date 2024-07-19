@@ -24,7 +24,7 @@ load cog
 | NAME        | RELEASE          | DESCRIPTION                                                      |
 |-------------|------------------|------------------------------------------------------------------|
 | [Avatar](avatar/)      | Stable      | Returns a user's avatar in an embed                         |
-| [Banana](banana/)      | WIP         | Show someone your banana!!                                  |
+| [Banana](banana/)      | WIP         | Show someone your banana or eat theirs!!                    |
 | [Banner](banner/)      | Stable      | Returns a user's banner in an embed                         |
 | [Echo](echo/)          | Stable      | Makes the bot say something in the specified channel.       |
 | [Gulag](gulag/)        | Beta        | Gulag users by restricting them to a channel.               |
