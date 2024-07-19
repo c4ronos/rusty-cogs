@@ -1,0 +1,12 @@
+{
+    "author": ["rusty-man"],
+    "description": "Cog to send a random meatrider image pointed at someone",
+    "install_msg": "Thanks for installing `meatrider`. See `[p]help MeatRider` for details.\n\nVisit [-this-](<https://github.com/rusty-man/rusty-cogs/tree/main/meatrider>) for a dedicated guide.",
+    "short": "Send a random meatrider image pointed at someone",
+    "hidden": false,
+    "disabled": false,
+    "required_cogs": {},
+    "requirements": [],
+    "tags": ["fun", "image", "meatrider"],
+    "type": "COG"
+  }
