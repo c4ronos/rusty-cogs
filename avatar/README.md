@@ -15,4 +15,4 @@
 <br/> <br/>
 ➥ [user] is an optional argument. If you simply run `avatar`, it will return your own avatar.
 <br/> <br/>
-➥ [type] is an optional argument. It allows you to retrieve either the global avtar of the user, the guild avatar, or the avatar decoration, default being global avatar. `[global | guild | deco]`
+➥ [type] is an optional argument. It allows you to retrieve either the global avatar of the user, the guild avatar, or the avatar decoration, default being global avatar. `[global | guild | deco]`
