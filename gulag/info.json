@@ -1,7 +1,7 @@
 {
     "author": ["rusty-man"],
     "description": "Gulag users by restricting them to a channel.",
-    "install_msg": "Thanks for installing `gulag`. See `[p]help Gulag` for details.\nNOTE: Make a gulag channel and a gulag role before setting up the cog.",
+    "install_msg": "Thanks for installing `gulag`. See `[p]help Gulag` for details.\nNOTE: Make a gulag channel and a gulag role before setting up the cog.\n\nVisit [-this-](<https://github.com/rusty-man/rusty-cogs/tree/main/gulag>) for a dedicated guide.",
     "short": "Gulag users.",
     "hidden": false,
     "disabled": false,

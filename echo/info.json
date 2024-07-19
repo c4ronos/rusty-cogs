@@ -1,7 +1,7 @@
 {
     "author": ["rusty-man"],
     "description": "Makes the bot say something in the specified channel.",
-    "install_msg": "Thanks for installing `echo`. See `[p]help Echo` for details.",
+    "install_msg": "Thanks for installing `echo`. See `[p]help Echo` for details.\n\nVisit [-this-](<https://github.com/rusty-man/rusty-cogs/tree/main/echo>) for a dedicated guide.",
     "short": "Echo a message.",
     "hidden": false,
     "disabled": false,
