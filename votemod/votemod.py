@@ -17,7 +17,7 @@ class VoteMod(commands.Cog):
 
     @commands.hybrid_command(name="voteban")
     @app_commands.describe(member="The member to be banned")
-    @commands.has_permissions(administrator=True)
+    @commands.has_permissions(ban_members=True)
     @commands.guild_only()
     async def voteban(self, ctx: commands.Context, member: discord.Member):
         """Start a vote to ban a user."""
@@ -26,7 +26,7 @@ class VoteMod(commands.Cog):
 
     @commands.hybrid_command(name="votekick")
     @app_commands.describe(member="The member to be kicked")
-    @commands.has_permissions(administrator=True)
+    @commands.has_permissions(kick_members=True)
     @commands.guild_only()
     async def votekick(self, ctx: commands.Context, member: discord.Member):
         """Start a vote to kick a user."""
