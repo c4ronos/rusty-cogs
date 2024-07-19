@@ -24,16 +24,17 @@ load cog
 | NAME        | RELEASE          | DESCRIPTION                                                      |
 |-------------|------------------|------------------------------------------------------------------|
 | [Avatar](avatar/)      | Stable      | Returns a user's avatar in an embed                         |
+| [Banana](banana/)      | WIP         | Show someone your banana!!                                  |
 | [Banner](banner/)      | Stable      | Returns a user's banner in an embed                         |
 | [Echo](echo/)          | Stable      | Makes the bot say something in the specified channel.       |
 | [Gulag](gulag/)        | Beta        | Gulag users by restricting them to a channel.               |
-| [ListEmoji](listemoji/)| Stable      | Get a list of emojis in your server. ~ Kennnyshiwa          |
+| [ListEmoji](listemoji/)| Stable      | Get a list of emojis in your server. ~ [Kennnyshiwa](https://github.com/kennnyshiwa/kennnyshiwa-cogs/)|
 | [VoteMod](votemod/)    | Stable      | Vote-based moderation command for banning / kicking users.  |
-| [WaifuIM](waifuim/)    | Stable      | Get images from waifu.im api ~ PhantomNimbi                 |
+| [WaifuIM](waifuim/)    | Stable      | Get images from waifu.im api ~ [PhantomNimbi](https://github.com/ghost)|
 |⠀   ⠀                   |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀                                         |
 
 # Contact⠀✿
 ---
-➥ dm me - `1eus` or `0eus`
+➥ dm me - `1eus` or `0eus`  ||  you can open an issue [-here-](https://github.com/rusty-man/rusty-cogs/issues) aswell
 <br/> <br/>
 ➥ ping me in [#support_othercogs](https://discord.com/channels/240154543684321280/240212783503900673) in the [Red - Cog Support](https://discord.gg/red-cog-support-240154543684321280) server
