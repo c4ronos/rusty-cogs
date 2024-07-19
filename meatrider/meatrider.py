@@ -35,13 +35,13 @@ class MeatRider(commands.Cog):
         color = await ctx.embed_color()
 
         if user == ctx.author:
-            embed = discord.Embed(title="Imagine MeatRiding yourself LMAO", color=color)
+            embed = discord.Embed(title="Imagine meatriding yourself LOL", color=color)
         else:
-            embed = discord.Embed(title="#Stop MeatRiding", color=color)
+            embed = discord.Embed(title="#Stop meatriding", color=color)
 
         embed.set_image(url=url)
 
-
+        # handle deletions for normal commands and app commands
         if ctx.interaction:
             if delete:
                 await ctx.send("Sent!", ephemeral=True)
