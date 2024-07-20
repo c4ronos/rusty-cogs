@@ -7,7 +7,7 @@
   <h1></h1>
 </p>
 
-# Installation⠀✿
+# Installation⠀⚒
 ---
 ```text
 repo add rusty-cogs https://github.com/rusty-man/rusty-cogs
@@ -19,7 +19,7 @@ cog install rusty-cogs cog
 load cog
 ```
 
-# Cogs⠀✿
+# Cogs⠀⚒
 ---
 | NAME        | RELEASE          | DESCRIPTION                                                      |
 |-------------|------------------|------------------------------------------------------------------|
@@ -35,7 +35,7 @@ load cog
 | [WaifuIM](waifuim/)    | Stable      | Get images from waifu.im api. ~ [PhantomNimbi](https://github.com/ghost)|
 |⠀   ⠀                   |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀                                         |
 
-# Contact⠀✿
+# Contact⠀⚒
 ---
 ➥ dm me - `1eus` or `0eus` || you can open an issue [-here-](https://github.com/rusty-man/rusty-cogs/issues) aswell
 <br/> <br/>
