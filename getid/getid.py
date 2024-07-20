@@ -30,7 +30,7 @@ class GetID(commands.Cog):
         await ctx.send(id)
 
 
-    @app_commands.command(name="getid-Member")
+    @app_commands.command(name="getid-member")
     @app_commands.describe(member="The member whose id is to be retrieved")
     @commands.guild_only()
     async def getid_member(self, interaction: discord.Interaction, member: discord.Member):
@@ -40,7 +40,7 @@ class GetID(commands.Cog):
         await interaction.response.send_message(id)
 
 
-    @app_commands.command(name="getid-Channel")
+    @app_commands.command(name="getid-channel")
     @app_commands.describe(channel="The channel whose id is to be retrieved")
     @commands.guild_only()
     async def getid_channel(self, interaction: discord.Interaction, channel: Union[discord.TextChannel, discord.VoiceChannel, discord.Thread, discord.ForumChannel, discord.StageChannel, discord.CategoryChannel]):
@@ -50,7 +50,7 @@ class GetID(commands.Cog):
         await interaction.response.send_message(id)
 
 
-    @app_commands.command(name="getid-Role")
+    @app_commands.command(name="getid-role")
     @app_commands.describe(role="The role whose id is to be retrieved")
     @commands.guild_only()
     async def getid_role(self, interaction: discord.Interaction, role: discord.Role):
@@ -60,7 +60,7 @@ class GetID(commands.Cog):
         await interaction.response.send_message(id)
         
 
-    @app_commands.command(name="getid-Guild")
+    @app_commands.command(name="getid-guild")
     @commands.guild_only()
     async def getid_guild(self, interaction: discord.Interaction):
         """Get ID of the guild"""
