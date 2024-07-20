@@ -27,6 +27,7 @@ load cog
 | [Banana](banana/)      | Beta        | Show someone your banana or eat theirs.                     |
 | [Banner](banner/)      | Stable      | Returns a user's banner in an embed.                        |
 | [Echo](echo/)          | Stable      | Makes the bot say something in the specified channel.       |
+| [GetID](getid/)        | Beta        | Get ID of a discord model \[user/channel/role/emoji/guild\] |
 | [Gulag](gulag/)        | Beta        | Gulag users by restricting them to a channel.               |
 | [ListEmoji](listemoji/)| Stable      | Get a list of emojis in your server. ~ [Kennnyshiwa](https://github.com/kennnyshiwa/kennnyshiwa-cogs/)|
 | [MeatRider](meatrider/)| Beta        | Send a random meatrider image pointed at someone.           |
@@ -36,6 +37,6 @@ load cog
 
 # Contact⠀✿
 ---
-➥ dm me - `1eus` or `0eus`  ||  you can open an issue [-here-](https://github.com/rusty-man/rusty-cogs/issues) aswell
+➥ dm me - `1eus` or `0eus` || you can open an issue [-here-](https://github.com/rusty-man/rusty-cogs/issues) aswell
 <br/> <br/>
 ➥ ping me in [#support_othercogs](https://discord.com/channels/240154543684321280/240212783503900673) in the [Red - Cog Support](https://discord.gg/red-cog-support-240154543684321280) server

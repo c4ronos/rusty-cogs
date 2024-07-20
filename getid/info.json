@@ -1,0 +1,12 @@
+{
+    "author": ["rusty-man"],
+    "description": "Get ID of a discord model [user/channel/role/emoji/guild]",
+    "install_msg": "Thanks for installing `getid`. See `[p]help GetID` for details.\n\nVisit [-this-](<https://github.com/rusty-man/rusty-cogs/tree/main/getid>) for a dedicated guide.",
+    "short": "Get ID of a discord model",
+    "hidden": false,
+    "disabled": false,
+    "required_cogs": {},
+    "requirements": [],
+    "tags": ["utility", "server", "id", "getid"],
+    "type": "COG"
+}
