@@ -1,0 +1,12 @@
+{
+    "author": ["rusty-man"],
+    "description": "Cog to manage timeouts of a user",
+    "install_msg": "Thanks for installing `timeout`. See `[p]help Timeout` for details.\n\nVisit [-this-](<https://github.com/rusty-man/rusty-cogs/tree/main/timeout>) for a dedicated guide.",
+    "short": "Timeout management",
+    "hidden": false,
+    "disabled": false,
+    "required_cogs": {},
+    "requirements": [],
+    "tags": ["server", "mute", "timeout"],
+    "type": "COG"
+  }
