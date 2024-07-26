@@ -15,8 +15,9 @@ class ListEmoji(commands.Cog):
     
 
     @commands.command()
-    @commands.guild_only()
     @checks.has_permissions(manage_emojis=True)
+    @commands.cooldown(1, 10, commands.BucketType.user)
+    @commands.guild_only()
     async def listemoji(self, ctx: commands.Context, ids: bool = False):
         """Lists all available emojis in a server, perfect for an emoji channel"""
 
