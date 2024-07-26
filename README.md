@@ -24,13 +24,13 @@ load cog
 | NAME        | RELEASE          | DESCRIPTION                                                      |
 |-------------|------------------|------------------------------------------------------------------|
 | [Avatar](avatar/)      | Stable      | Returns a user's avatar in an embed (supports decoration).  |
-| [Banana](banana/)      | Beta        | Show someone your banana or eat theirs.                     |
+| [Banana](banana/)      | Stable      | Show someone your banana or eat theirs.                     |
 | [Banner](banner/)      | Stable      | Returns a user's banner in an embed.                        |
 | [Echo](echo/)          | Stable      | Makes the bot say something in the specified channel.       |
 | [GetID](getid/)        | Beta        | Get ID of a discord model \[user/channel/role/emoji/guild\] |
 | [Gulag](gulag/)        | Beta        | Gulag users by restricting them to a channel.               |
 | [ListEmoji](listemoji/)| Stable      | Get a list of emojis in your server.                        |
-| [MeatRider](meatrider/)| Beta        | Send a random meatrider image pointed at someone.           |
+| [MeatRider](meatrider/)| Stable      | Send a random meatrider image pointed at someone.           |
 | [Timeout](timeout/)    | Beta        | Manage timeouts for a user.                                 |
 | [VoteMod](votemod/)    | Stable      | Vote-based moderation command for banning / kicking users.  |
 | [WaifuIM](waifuim/)    | Stable      | Get images from waifu.im api.                               |
