@@ -1,8 +1,9 @@
+### original author : [kennnyshiwa](https://github.com/kennnyshiwa/kennnyshiwa-cogs/)
+<h1></h1>
+
 # INFO
 ---
-➥ This is a fork of the outdated `listemoji` cog from [Kennnyshiwa](https://github.com/kennnyshiwa/kennnyshiwa-cogs/)
-<br/> <br/>
-➥ It lists all the emojis in the server.
+➥ List all the static and animated emojis of a server.
 
 # USAGE
 ---

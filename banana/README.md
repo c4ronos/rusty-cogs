@@ -3,7 +3,7 @@
 
 # INFO
 ---
-➥ This is a cog to show someone their banana or eat theirs.
+➥ This is a cog to show someone your banana or eat theirs.
 <br/> <br/>
 ➥ Inspired by [PixxieBot](https://pixx.ie/).
 

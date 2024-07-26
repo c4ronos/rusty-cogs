@@ -1,4 +1,6 @@
-# Fork of WaifuIM made by PhantomNimbi (ShitShowCogs)
+### original author : [PhantomNimbi](https://github.com/ghost)
+<h1></h1>
+
 ### NSFW Commands can only be used in NSFW channels.
 <h1></h1>
 
