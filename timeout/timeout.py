@@ -20,8 +20,10 @@ class Timeout(commands.Cog):
     def check_hierarchy(self, ctx, member: discord.Member):
         bot_member = ctx.guild.get_member(ctx.bot.user.id)
         if member.top_role >= bot_member.top_role or member.top_role >= ctx.author.top_role:
-            return False
-        return True
+            return False, "role_heirarchy"
+        elif member.guild_permissions.moderate_members:
+            return False, "user_mod"
+        return True, None
     
 
     def validate_duration(self, duration):
@@ -75,29 +77,39 @@ class Timeout(commands.Cog):
             description = f"- ❌ Timeout duration cannot be `< 1m` / `> 28d`.\n{docs}"
         elif description == "invalid_duration":
             description = f"- ❌ That is not a valid time format.ㅤㅤㅤㅤㅤ\n{docs}"
+        elif description == "role_heirarchy":
+            description = f"- ❌ Insufficient permissions (bot/author hierarchy).\n{docs}"
+        elif description == "user_mod":
+            description = f"- ❌ Cannot timeout members with timeout permissions.\n{docs}"
 
         embed = discord.Embed(color=color, title=title, description=description)
         await ctx.send(embed=embed)
 
 
-    @commands.hybrid_command(name="timeout")
+    @commands.hybrid_command(name="timeout", usage="<member> [duration] [reason]")
     @app_commands.describe(member="the member to be timed out. (can be mention/id/username)", duration="[optional] the duration of timeout e.g. 2d3h30m", reason="[optional] the reason for timeout")
     @commands.has_permissions(moderate_members=True)
-    @commands.cooldown(1, 1, commands.BucketType.user)
     @commands.guild_only()
     async def timeout(self, ctx: commands.Context, member: str, duration: str ="30m", *, reason: str =None):
-        """Times out a member for a specified duration."""
+        """Times out a member for a specified duration.
+        
+        > example: `[p]timeout @yapper 1h30m talks too much`
+        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/timeout>)
+        """
 
         member_obj = await self.get_member(ctx, member)
         if not member_obj:
             await self.create_error_embed(ctx, "user_not_found")
             return
-        if not self.check_hierarchy(ctx, member_obj):
-            await ctx.send("Insufficient permissions (bot/author hierarchy)")
+        is_valid, error_message = self.check_hierarchy(ctx, member_obj)
+        if not is_valid:
+            await self.create_error_embed(ctx, error_message)
             return
         if not self.validate_duration(duration):
             await self.create_error_embed(ctx, "invalid_duration")
             return
+
+        await ctx.message.delete()
 
         seconds = self.parse_duration(duration)
         min_seconds = 60
@@ -112,25 +124,31 @@ class Timeout(commands.Cog):
         try:
             await member_obj.timeout(td, reason=reason)
             await self.create_timeout_embed(ctx, "Timeout Result", duration, timestamp, reason, member_obj)
-        except Exception:
-            await ctx.send(f"Failed to timeout member. Try again. [{Exception}]")
+        except:
+            await ctx.send(f"Failed to timeout member. Try again.")
         
 
-    @commands.hybrid_command(name="untimeout")
+    @commands.hybrid_command(name="untimeout", usage="<member>")
     @app_commands.describe(member="the member to be timed out. (can be mention/id/username)")
     @commands.has_permissions(moderate_members=True)
-    @commands.cooldown(1, 1, commands.BucketType.user)
     @commands.guild_only()
     async def untimeout(self, ctx: commands.Context, member: str):
-        """Removes timeout from a member."""
+        """Removes timeout from a member.
+        
+        > example: `[p]untimeout @yapper`
+        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/timeout>)
+        """
 
         member_obj = await self.get_member(ctx, member)
         if not member_obj:
             await self.create_error_embed(ctx, "user_not_found")
             return
-        if not self.check_hierarchy(ctx, member_obj):
-            await ctx.send("Insufficient permissions (bot/author hierarchy)")
+        is_valid, error_message = self.check_hierarchy(ctx, member_obj)
+        if not is_valid:
+            await self.create_error_embed(ctx, error_message)
             return
+        
+        await ctx.message.delete()
         
         if not member_obj.is_timed_out():
             await self.create_error_embed(ctx, "not_timed_out")
@@ -143,24 +161,30 @@ class Timeout(commands.Cog):
                 await ctx.send(f"Failed to untimeout member. Try again. [{Exception}]")
 
 
-    @commands.hybrid_command(name="extendtimeout")
+    @commands.hybrid_command(name="extendtimeout", usage="<member> [duration]")
     @app_commands.describe(member="the member to be timed out. (can be mention/id/username)", duration="[optional] the duration of timeout e.g. 2d3h30m")
     @commands.has_permissions(moderate_members=True)
-    @commands.cooldown(1, 1, commands.BucketType.user)
     @commands.guild_only()
     async def extendtimeout(self, ctx: commands.Context, member: str, duration="30m"):
-        """Extends the timeout duration for a member."""
+        """Extends the timeout duration for a member.
+        
+        > example: `[p]extendtimeout @yapper 1h30m`
+        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/timeout>)
+        """
         
         member_obj = await self.get_member(ctx, member)
         if not member_obj:
             await self.create_error_embed(ctx, "user_not_found")
             return
-        if not self.check_hierarchy(ctx, member_obj):
-            await ctx.send("Insufficient permissions (bot/author hierarchy)")
+        is_valid, error_message = self.check_hierarchy(ctx, member_obj)
+        if not is_valid:
+            await self.create_error_embed(ctx, error_message)
             return
         if not self.validate_duration(duration):
             await self.create_error_embed(ctx, "invalid_duration")
             return
+        
+        await ctx.message.delete()
         
         if not member_obj.is_timed_out():
             await self.create_error_embed(ctx, "not_timed_out")
