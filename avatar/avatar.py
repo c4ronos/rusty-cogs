@@ -12,14 +12,15 @@ class Avatar(commands.Cog):
         self.config.register_global(**default_global)
 
 
-    @commands.hybrid_command(name="avatar")
+    @commands.hybrid_command(name="avatar", usage="[user] [type]")
     @app_commands.describe(user="The user you wish to retrieve the avatar of (optional)", type="Global avatar or guild avatar or avatar decoration (optional)")
     @commands.guild_only()
     async def avatar(self, ctx: commands.Context, user: Optional[Union[discord.Member, discord.User]], type: Optional[Literal["global", "guild", "deco"]]) -> None:
         """Returns a user's avatar assets as an embed. (see help)
 
-        > optional - [user] can be a user mention, username, or user ID.
-        > optional - [type] can be either `global` | `guild` | `deco` [default=global].
+        > optional - [user] = `@mention` / `username` / `id`
+        > optional - [type] = `global` / `guild` / `deco` (default=global)
+        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/avatar>)
         """
 
         user = user or ctx.author
