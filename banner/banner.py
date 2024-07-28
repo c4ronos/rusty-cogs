@@ -18,7 +18,8 @@ class Banner(commands.Cog):
     async def banner(self, ctx: commands.Context, user: Optional[Union[discord.Member, discord.User]] = None) -> None:
         """Returns a user's banner as an embed.
 
-        > optional - [user] can be a user mention, username, or user ID.
+        > optional - [user] = `@mention` / `username` / `id`
+        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/avatar>)
         """
 
         user = user or ctx.author
