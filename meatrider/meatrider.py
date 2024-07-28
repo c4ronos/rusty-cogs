@@ -7,13 +7,14 @@ class MeatRider(commands.Cog):
     """Send a random meatrider image pointed at someone"""
 
 
-    @commands.hybrid_command(name="meatrider")
+    @commands.hybrid_command(name="meatrider", usage="<user> [delete]")
     @app_commands.describe(user="The user who is meatriding", delete="[Optional] Whether to hide who ran the command or not")
     @commands.guild_only()
     async def meatrider(self, ctx: commands.Context, user: discord.Member, delete: bool=False):
-        """Send a random meatrider image pointed at someone
+        """Send a random meatrider image pointed at someone.
         
-        Example: `meatrider 829031830138 true`
+        > example: `meatrider @dream` / `meatrider @dream true`
+        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/meatrider>)
         """
 
         urls = (
