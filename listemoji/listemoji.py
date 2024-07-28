@@ -1,6 +1,6 @@
 import discord
 import time
-from redbot.core import commands, checks
+from redbot.core import app_commands, commands
 from redbot.core.utils.chat_formatting import pagify
 
 __author__ = ["kennnyshiwa", "rusty-man"]
@@ -14,12 +14,16 @@ class ListEmoji(commands.Cog):
         return
     
 
-    @commands.command()
-    @checks.has_permissions(manage_emojis=True)
+    @commands.hybrid_command(name="listemoji", usage="[ids=false]")
+    @app_commands.describe(ids="whether to send emoji name+id (true) or only emoji name (false)")
+    @commands.has_permissions(manage_emojis=True)
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.guild_only()
     async def listemoji(self, ctx: commands.Context, ids: bool = False):
-        """Lists all available emojis in a server, perfect for an emoji channel"""
+        """Lists all available emojis in a server, perfect for an emoji channel.
+        
+        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/listemoji>)
+        """
 
         if not ids:
             text = "\n".join(
@@ -40,4 +44,7 @@ class ListEmoji(commands.Cog):
 
         for page in pagify(text):
             time.sleep(0.5)             # prevent rate limit in servers with lots of emojis
-            await ctx.send(page)
+            if ctx.interaction:
+                await ctx.channel.send(page)
+            else:
+                await ctx.send(page)

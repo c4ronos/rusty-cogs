@@ -1,3 +1,6 @@
+### Supports slash commands
+<h1></h1>
+
 ### original author : [kennnyshiwa](https://github.com/kennnyshiwa/kennnyshiwa-cogs/)
 <h1></h1>
 
