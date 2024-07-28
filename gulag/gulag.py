@@ -14,10 +14,12 @@ class Gulag(commands.Cog):
     @commands.hybrid_command(name="gulag")
     @app_commands.describe(member="The member to send to the gulag")
     @commands.has_permissions(administrator=True)
-    @commands.cooldown(1, 1, commands.BucketType.user)
     @commands.guild_only()
     async def gulag_member(self, ctx: commands.Context, member: discord.Member):
-        """Sends a member to the gulag."""
+        """Sends a member to the gulag.
+        
+        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/gulag>)
+        """
         guild_config = self.config.guild(ctx.guild)
         gulag_role_id = await guild_config.gulag_role()
         gulag_channel_id = await guild_config.gulag_channel()
@@ -55,10 +57,12 @@ class Gulag(commands.Cog):
     @commands.hybrid_command(name="bail")
     @app_commands.describe(member="The member to be released from the gulag")
     @commands.has_permissions(administrator=True)
-    @commands.cooldown(1, 1, commands.BucketType.user)
     @commands.guild_only()
     async def bail_member(self, ctx: commands.Context, member: discord.Member):
-        """Releases a member from the gulag."""
+        """Releases a member from the gulag.
+        
+        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/gulag>)
+        """
         guild_config = self.config.guild(ctx.guild)
         gulag_role_id = await guild_config.gulag_role()
 
@@ -91,7 +95,10 @@ class Gulag(commands.Cog):
 
     @gulagset.command(name="channel")
     async def set_gulag_channel(self, ctx: commands.Context, channel: discord.TextChannel):
-        """Configures the gulag channel."""
+        """Configures the gulag channel.
+        
+        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/gulag>)
+        """
         if not channel:
             await ctx.send("Channel not found.")
             return
@@ -102,7 +109,10 @@ class Gulag(commands.Cog):
 
     @gulagset.command(name="role")
     async def set_gulag_role(self, ctx: commands.Context, role: discord.Role):
-        """Configures the gulag role."""
+        """Configures the gulag role.
+        
+        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/gulag>)
+        """
         gulag_channel_id = await self.config.guild(ctx.guild).gulag_channel()
 
         gulag_channel = ctx.guild.get_channel(gulag_channel_id)
@@ -126,7 +136,10 @@ class Gulag(commands.Cog):
 
     @gulagset.command(name="clear")
     async def clear_gulag(self, ctx: commands.Context):
-        """Resets the gulag role and channel."""
+        """Resets the gulag role and channel.
+        
+        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/gulag>)
+        """
         guild_config = self.config.guild(ctx.guild)
         gulag_role_id = await guild_config.gulag_role()
         gulag_channel_id = await guild_config.gulag_channel()
