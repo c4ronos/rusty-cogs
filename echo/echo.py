@@ -13,7 +13,10 @@ class Echo(commands.Cog):
     @app_commands.describe(message="Input Message", channel="Input Channel")
     @commands.guild_only()
     async def echo(self, ctx: commands.Context, channel: Optional[discord.TextChannel] = None, *, message: str):
-        """Makes the bot say something in the specified channel."""
+        """Makes the bot say something in the specified channel.
+        
+        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/echo>)
+        """
 
         # Send the message without letting others know who ran the command
         if ctx.interaction:
