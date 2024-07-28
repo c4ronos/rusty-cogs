@@ -7,13 +7,15 @@ class Banana(commands.Cog):
     """Show someone your banana or eat theirs"""
 
     
-    @commands.hybrid_command(name="banana")
+    @commands.hybrid_command(name="banana", usage="<user> <action>")
     @app_commands.describe(user="The user you wish to show your banana or eat theirs", action="show or eat")
     @commands.guild_only()
     async def banana(self, ctx: commands.Context, user: discord.Member, action: Literal["show","eat"]):
         """Show someone your banana or eat theirs
-        
-        > Example: `banana 792305160149 show`
+
+        > [action] = `show` / `eat`        
+        > example: `[p]banana @e-girl show`
+        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/banana>)
         """
 
         embed_description = "Should we be surprised? 🤔"
