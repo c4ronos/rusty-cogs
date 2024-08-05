@@ -35,7 +35,7 @@ class Banner(commands.Cog):
                 embed = discord.Embed(color=embed_color, description=f"**[Banner]({banner_url})**")
                 if banner_url:
                     embed.set_image(url=banner_url)
-                    embed.set_author(name=f"{user.name} ~ {user.display_name}", icon_url=user.avatar.url)
+                    embed.set_author(name=f"{user.name} ~ {user.display_name}", icon_url=user.display_avatar.url)
                 else:
                     embed.description = "This user doesn't have a banner."
 
