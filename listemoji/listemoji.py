@@ -22,7 +22,8 @@ class ListEmoji(commands.Cog):
     async def listemoji(self, ctx: commands.Context, ids: bool = False):
         """Lists all available emojis in a server, perfect for an emoji channel.
         
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/listemoji>)
+        > Use `listemoji` to display the emojis as {emoji} → {emoji_name}
+        > Use `listemoji true` to display the emojis as {emoji} → {emoji_name+id}
         """
 
         if not ids:

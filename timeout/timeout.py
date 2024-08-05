@@ -94,7 +94,8 @@ class Timeout(commands.Cog):
         """Times out a member for a specified duration.
         
         > example: `[p]timeout @yapper 1h30m talks too much`
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/timeout>)
+        > [duration] is optional. default is 30m.
+        > Timeout duration cannot exceed 28days.
         """
 
         member_obj = await self.get_member(ctx, member)
@@ -136,7 +137,6 @@ class Timeout(commands.Cog):
         """Removes timeout from a member.
         
         > example: `[p]untimeout @yapper`
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/timeout>)
         """
 
         member_obj = await self.get_member(ctx, member)
@@ -169,7 +169,7 @@ class Timeout(commands.Cog):
         """Extends the timeout duration for a member.
         
         > example: `[p]extendtimeout @yapper 1h30m`
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/timeout>)
+        > Total timeout duration cannot exceed 28days
         """
         
         member_obj = await self.get_member(ctx, member)

@@ -15,7 +15,6 @@ class Banana(commands.Cog):
 
         > [action] = `show` / `eat`        
         > example: `[p]banana @e-girl show`
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/banana>)
         """
 
         embed_description = "Should we be surprised? 🤔"

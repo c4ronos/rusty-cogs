@@ -21,10 +21,7 @@ class VoteMod(commands.Cog):
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.guild_only()
     async def voteban(self, ctx: commands.Context, member: discord.Member):
-        """Start a vote to ban a user.
-        
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/votemod>)
-        """
+        """Start a vote to ban a user."""
         await self.start_vote(ctx, member, "ban")
 
 
@@ -34,10 +31,7 @@ class VoteMod(commands.Cog):
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.guild_only()
     async def votekick(self, ctx: commands.Context, member: discord.Member):
-        """Start a vote to kick a user.
-        
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/votemod>)
-        """
+        """Start a vote to kick a user."""
         await self.start_vote(ctx, member, "kick")
 
 
@@ -48,8 +42,7 @@ class VoteMod(commands.Cog):
     async def voteset(self, ctx: commands.Context, votes: int):
         """Set the number of votes required for votemod.
         
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/votemod>)
-        """
+        > Default no. of required votes = 5"""
         await self.config.guild(ctx.guild).required_votes.set(votes)
         await ctx.send(f"Required votes for voteban and votekick set to {votes}.")
 

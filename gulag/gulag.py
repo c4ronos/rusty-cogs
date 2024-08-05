@@ -18,7 +18,7 @@ class Gulag(commands.Cog):
     async def gulag_member(self, ctx: commands.Context, member: discord.Member):
         """Sends a member to the gulag.
         
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/gulag>)
+        > This will take away all roles of a member and give them the gulag role.
         """
         guild_config = self.config.guild(ctx.guild)
         gulag_role_id = await guild_config.gulag_role()
@@ -61,7 +61,7 @@ class Gulag(commands.Cog):
     async def bail_member(self, ctx: commands.Context, member: discord.Member):
         """Releases a member from the gulag.
         
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/gulag>)
+        > This will take away gulag role and give back the roles the member previously had.
         """
         guild_config = self.config.guild(ctx.guild)
         gulag_role_id = await guild_config.gulag_role()
@@ -95,10 +95,7 @@ class Gulag(commands.Cog):
 
     @gulagset.command(name="channel")
     async def set_gulag_channel(self, ctx: commands.Context, channel: discord.TextChannel):
-        """Configures the gulag channel.
-        
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/gulag>)
-        """
+        """Configures the gulag channel."""
         if not channel:
             await ctx.send("Channel not found.")
             return
@@ -109,10 +106,7 @@ class Gulag(commands.Cog):
 
     @gulagset.command(name="role")
     async def set_gulag_role(self, ctx: commands.Context, role: discord.Role):
-        """Configures the gulag role.
-        
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/gulag>)
-        """
+        """Configures the gulag role."""
         gulag_channel_id = await self.config.guild(ctx.guild).gulag_channel()
 
         gulag_channel = ctx.guild.get_channel(gulag_channel_id)
@@ -136,10 +130,7 @@ class Gulag(commands.Cog):
 
     @gulagset.command(name="clear")
     async def clear_gulag(self, ctx: commands.Context):
-        """Resets the gulag role and channel.
-        
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/gulag>)
-        """
+        """Resets the gulag role and channel."""
         guild_config = self.config.guild(ctx.guild)
         gulag_role_id = await guild_config.gulag_role()
         gulag_channel_id = await guild_config.gulag_channel()

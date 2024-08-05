@@ -20,7 +20,6 @@ class Avatar(commands.Cog):
 
         > optional - [user] = `@mention` / `username` / `id`
         > optional - [type] = `global` / `guild` / `deco` (default=global)
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/avatar>)
         """
 
         user = user or ctx.author

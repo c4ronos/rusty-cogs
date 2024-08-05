@@ -14,7 +14,6 @@ class MeatRider(commands.Cog):
         """Send a random meatrider image pointed at someone.
         
         > example: `meatrider @dream` / `meatrider @dream true`
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/meatrider>)
         """
 
         urls = (

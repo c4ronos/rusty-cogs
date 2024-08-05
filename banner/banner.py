@@ -19,7 +19,6 @@ class Banner(commands.Cog):
         """Returns a user's banner as an embed.
 
         > optional - [user] = `@mention` / `username` / `id`
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/avatar>)
         """
 
         user = user or ctx.author

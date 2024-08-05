@@ -33,10 +33,7 @@ class WaifuIM(commands.Cog):
 
     @waifuim.command()
     async def help(self, ctx):
-        """Display the waifuim help message
-
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/waifuim>)
-        """
+        """Display the waifuim help message"""
         tags_endpoint = 'https://api.waifu.im/tags'
 
         async with self.session.get(tags_endpoint) as response:
@@ -63,10 +60,7 @@ class WaifuIM(commands.Cog):
 
     @waifuim.command()
     async def random(self, ctx):
-        """Get a random waifu image
-
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/waifuim>)
-        """
+        """Get a random waifu image"""
         search_endpoint = 'https://api.waifu.im/search'
 
         params = {'is_nsfw': 'true'} if ctx.channel.is_nsfw() else {'is_nsfw': 'false'}
@@ -102,7 +96,6 @@ class WaifuIM(commands.Cog):
         """Get a random waifu image by tag.
 
         > See `[p]waifuim help` for a list of available tags.
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/waifuim>)
         """
         tags_endpoint = 'https://api.waifu.im/tags'
         search_endpoint = 'https://api.waifu.im/search'
@@ -149,10 +142,7 @@ class WaifuIM(commands.Cog):
 
     @waifuim.command()
     async def gif(self, ctx):
-        """Get a random waifu gif
-
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/waifuim>)
-        """
+        """Get a random waifu gif"""
         search_endpoint = 'https://api.waifu.im/search'
 
         params = {'gif': 'true', 'is_nsfw': 'true'} if ctx.channel.is_nsfw() else {'gif': 'true'}

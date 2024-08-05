@@ -15,7 +15,8 @@ class GetID(commands.Cog):
     async def getid(self, ctx: commands.Context, model: Union[discord.TextChannel, discord.VoiceChannel, discord.Thread, discord.ForumChannel, discord.StageChannel, discord.CategoryChannel, discord.Member, discord.Role, discord.Emoji, discord.GuildSticker, Literal["guild"]]):
         """Get ID of a discord model [user/channel/role/emoji/guild]
         
-        - [documentation](<https://github.com/rusty-man/rusty-cogs/tree/main/getid>)
+        - `getid @rusty-man` ~ `getid #general` ~ `getid @members` ~ `getid :bruh_emoji:` ~ `getid guild`
+        - `getid username` ~ `getid role_name` ~ `getid emoji_name` ~ `getid channel_name`
         """
 
         if isinstance(model, discord.Role):
