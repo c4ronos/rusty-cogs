@@ -23,7 +23,7 @@
 <br/><br/>
 - `--user <user>` - Search messages only from this user. Value can be username/id/mention.
 <br/><br/>
-- `--not-user <user>` - Do not search messages from this user. Value can be username/id/mention
+- `--not-user <user>` - Do not search messages from this user. Value can be username/id/mention.
 <br/><br/>
 - `--bots` - Search messages also from bots.
 <br/><br/>
@@ -41,7 +41,7 @@
 ---
 ➥ Recommended for trying regex: https://regex101.com/
 <br/><br/>
-➥ Basic regex cheatsheat: [simple_regex.md](.archive/simple_regex.md)
+➥ Basic regex cheatsheat: [.archive/simple_regex](https://github.com/rusty-man/rusty-cogs/blob/main/.archive/simple_regex.md)
 
 # EXAMPLES
 ---
