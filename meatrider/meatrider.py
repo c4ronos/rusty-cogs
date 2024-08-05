@@ -28,7 +28,10 @@ class MeatRider(commands.Cog):
             "https://i.ibb.co/ccML0Ks/meatrider-11.jpg",
             "https://i.ibb.co/0myvdy7/meatrider-12.jpg",
             "https://i.ibb.co/TKPRv5t/meatrider-13.jpg",
-            "https://i.ibb.co/d4tkhPC/meatrider-15.jpg"
+            "https://i.ibb.co/d4tkhPC/meatrider-15.jpg",
+            "https://i.ibb.co/2d8qQv1/meatrider-16.jpg",
+            "https://i.ibb.co/287nX8n/meatrider-18.jpg",
+            "https://i.ibb.co/q73cZ2c/meatrider-19.png",
         )
 
         url = random.choice(urls)
