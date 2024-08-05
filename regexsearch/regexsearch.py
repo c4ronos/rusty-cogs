@@ -13,7 +13,10 @@ class RegexSearch(commands.Cog):
     @commands.cooldown(1, 20, commands.BucketType.user)
     @commands.guild_only()
     async def regex(self, ctx, pattern: str, *, flags: str = None):
-        """Search messages with a regex pattern"""
+        """Search messages with a regex pattern
+        
+        > By default, this will ignore bots, embeds, attachments.
+        """
 
 
         limit = 500
