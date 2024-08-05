@@ -11,7 +11,9 @@
 
 # USAGE
 ---
-➥`[p]regex <pattern> [flags]`
+➥ `[p]regex <pattern> [flags]`
+<br/><br/>
+➥ `[p] regex help` for the list of flags and some examples
 
 # FLAGS
 ---
