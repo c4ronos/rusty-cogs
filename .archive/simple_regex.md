@@ -17,15 +17,6 @@
 `^`     // match the beginning of the line\
 `$`     // match the end of a line\
 <br/><br/>
-`[:alpha:]`   // Represents an alphabetic character. Use [:alpha:]+ to find one of them.\
-`[:digit:]`   // Represents a decimal digit. Use [:digit:]+ to find one of them.\
-`[:alnum:]`   // Represents an alphanumeric character ([:alpha:] and [:digit:]).\
-`[:space:]`   // Represents a space character (but not other whitespace characters).\
-`[:print:]`   // Represents a printable character.\
-`[:cntrl:]`   // Represents a nonprinting character.\
-`[:lower:]`   // Represents a lowercase character if Match case is selected in Options.\
-`[:upper:]`   // Represents an uppercase character if Match case is selected in Options.\
-<br/><br/>
 `\d`    // matches a digit, same as [0-9]\
 `\D`    // matches a non-digit, same as [^0-9]\
 `\s`    // matches a whitespace character (space, tab, newline, etc.)\
@@ -42,7 +33,7 @@
 ---
 https://regex101.com/           // test all regex here\
 https://net.tutsplus.com/tutorials/other/8-regular-expressions-you-should-know/     // regex examples\
-https://regexlib.com\
+https://regexlib.com/
 
 <br/><br/>
 # Examples
