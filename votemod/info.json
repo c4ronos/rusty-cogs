@@ -1,6 +1,6 @@
 {
     "author": ["rusty-man"],
-    "description": "Fun vote-based moderation command for banning / kicking users.",
+    "description": "Fun vote-based moderation command for banning / kicking / muting users.",
     "install_msg": "Thanks for installing `votemod`. See `[p]help VoteMod` for details.\n\nVisit [-this-](<https://github.com/rusty-man/rusty-cogs/tree/main/votemod>) for a dedicated guide.",
     "short": "Fun vote-based moderation.",
     "hidden": false,
