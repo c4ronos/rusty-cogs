@@ -49,9 +49,9 @@ class Timeout(commands.Cog):
     async def create_timeout_embed(self, ctx, title, duration, timestamp, reason, target=None):
         color = discord.Color(0xFFFFFF)
         if title == "Timeout Result":
-            description = f"- `{target.name}` has been muted for `{duration}`. Ends in: <t:{timestamp}:R>\n> **Reason:** {reason or 'No Reason'}"
+            description = f"- `{target.name}` has been muted for `{duration}`. Ends: <t:{timestamp}:R>\n> **Reason:** {reason or 'No Reason'}"
         else:
-            description = f"- `{target.name}`'s mute extended by `{duration}`. Ends in: <t:{timestamp}:R>\n> **Reason:** {reason or 'No Reason'}"
+            description = f"- `{target.name}`'s mute extended by `{duration}`. Ends: <t:{timestamp}:R>\n> **Reason:** {reason or 'No Reason'}"
 
         embed = discord.Embed(color=color, title=title, description=description)
         await ctx.send(embed=embed)
