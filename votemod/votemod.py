@@ -5,7 +5,7 @@ import asyncio
 
 class VoteMod(commands.Cog):
     """
-    Fun vote-based moderation commands for banning or kicking users.
+    Fun vote-based moderation commands for banning, kicking, or muting users.
     """
 
     def __init__(self, bot: Red):
@@ -13,7 +13,6 @@ class VoteMod(commands.Cog):
         self.config = Config.get_conf(self, identifier=167470521189)
         self.config.register_guild(required_votes=5)
         self.active_votes = {}
-
 
     @commands.hybrid_command(name="voteban")
     @app_commands.describe(member="The member to be banned")
@@ -24,7 +23,6 @@ class VoteMod(commands.Cog):
         """Start a vote to ban a user."""
         await self.start_vote(ctx, member, "ban")
 
-
     @commands.hybrid_command(name="votekick")
     @app_commands.describe(member="The member to be kicked")
     @commands.has_permissions(kick_members=True)
@@ -34,33 +32,37 @@ class VoteMod(commands.Cog):
         """Start a vote to kick a user."""
         await self.start_vote(ctx, member, "kick")
 
+    @commands.hybrid_command(name="votemute")
+    @app_commands.describe(member="The member to be muted")
+    @commands.cooldown(1, 10, commands.BucketType.user)
+    @commands.guild_only()
+    async def votemute(self, ctx: commands.Context, member: discord.Member):
+        """Start a vote to mute a user (timeout)."""
+        await self.start_vote(ctx, member, "mute")
 
     @commands.hybrid_command(name="voteset")
     @app_commands.describe(votes="The number of votes required for votemod")
     @commands.has_permissions(administrator=True)
     @commands.guild_only()
     async def voteset(self, ctx: commands.Context, votes: int):
-        """Set the number of votes required for votemod.
-        
-        > Default no. of required votes = 5"""
+        """Set the number of votes required for votemod."""
         await self.config.guild(ctx.guild).required_votes.set(votes)
-        await ctx.send(f"Required votes for voteban and votekick set to {votes}.")
+        await ctx.send(f"Required votes for voteban, votekick, and votemute set to {votes}.")
 
     async def start_vote(self, ctx: commands.Context, member: discord.Member, action: str):
         # Check hierarchy
         bot_member = ctx.guild.get_member(ctx.bot.user.id)
         if member.top_role >= bot_member.top_role or member.top_role >= ctx.author.top_role:
-            await ctx.send("Insufficient permissions (bot/author heirarchy)")
+            await ctx.send("Insufficient permissions (bot/author hierarchy)")
             return
 
         required_votes = await self.config.guild(ctx.guild).required_votes()
-
         embed = discord.Embed(
             title=f"Vote to {action} {member}",
             description=f"React with ✅ to {action}, ❌ to stop this vote.",
             color=discord.Color.red() if action == "ban" else discord.Color.orange()
         )
-        embed.set_footer(text=f"{required_votes} reactions required to execute / cancel this action.")
+        embed.set_footer(text=f"{required_votes} reactions required to execute/cancel this action.")
         
         msg = await ctx.send(embed=embed)
         await msg.add_reaction("✅")
@@ -75,10 +77,9 @@ class VoteMod(commands.Cog):
             "no": 0
         }
 
-        await asyncio.sleep(300)  # 5 minutes
+        await asyncio.sleep(300)
         if msg.id in self.active_votes:
             await self.end_vote(msg.id)
-
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):
@@ -106,12 +107,14 @@ class VoteMod(commands.Cog):
         msg = await channel.fetch_message(message_id)
 
         if vote["yes"] >= await self.config.guild(guild).required_votes():
-            action_text = "banned" if vote["action"] == "ban" else "kicked"
+            action_text = "banned" if vote["action"] == "ban" else "kicked" if vote["action"] == "kick" else "muted"
             try:
                 if vote["action"] == "ban":
                     await member.ban(reason="Vote ban passed.")
-                else:
+                elif vote["action"] == "kick":
                     await member.kick(reason="Vote kick passed.")
+                elif vote["action"] == "mute":
+                    await member.timeout(discord.utils.utcnow() + discord.timedelta(seconds=600), reason="Vote mute passed.")
                 result = f"{member.mention} has been {action_text}."
                 color = discord.Color.red() if vote["action"] == "ban" else discord.Color.orange()
             except Exception as e:
@@ -127,6 +130,4 @@ class VoteMod(commands.Cog):
             color=color
         )
         await msg.edit(embed=embed)
-
-        # Remove reactions
         await msg.clear_reactions()
