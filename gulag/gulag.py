@@ -151,3 +151,26 @@ class Gulag(commands.Cog):
 
         await gulag_channel.set_permissions(guild.default_role, view_channel=False)
         await gulag_channel.set_permissions(gulag_role, view_channel=True, send_messages=True)
+
+
+    @commands.Cog.listener()
+    async def on_guild_channel_create(self, channel: discord.abc.GuildChannel):
+        """Automatically update permissions for new channels created."""
+        guild = channel.guild
+        guild_config = self.config.guild(guild)
+        gulag_role_id = await guild_config.gulag_role()
+
+        if not gulag_role_id:
+            return
+
+        gulag_role = guild.get_role(gulag_role_id)
+        if not gulag_role:
+            return
+
+        gulag_channel_id = await guild_config.gulag_channel()
+        gulag_channel = guild.get_channel(gulag_channel_id)
+
+        if gulag_channel and channel.id == gulag_channel.id:
+            return
+
+        await channel.set_permissions(gulag_role, view_channel=False, send_messages=False)
