@@ -49,9 +49,9 @@ class Timeout(commands.Cog):
     async def create_timeout_embed(self, ctx, title, duration, timestamp, reason, target=None):
         color = discord.Color(0xFFFFFF)
         if title == "Timeout Result":
-            description = f"- `{target.name}` has been muted for `{duration}`. Ends in: <t:{timestamp}:R>\n\n> **Reason:** {reason or 'No Reason'}"
+            description = f"- `{target.name}` has been muted for `{duration}`. Ends in: <t:{timestamp}:R>\n> **Reason:** {reason or 'No Reason'}"
         else:
-            description = f"- `{target.name}`'s mute extended by `{duration}`. Ends in: <t:{timestamp}:R>\n\n> **Reason:** {reason or 'No Reason'}"
+            description = f"- `{target.name}`'s mute extended by `{duration}`. Ends in: <t:{timestamp}:R>\n> **Reason:** {reason or 'No Reason'}"
 
         embed = discord.Embed(color=color, title=title, description=description)
         await ctx.send(embed=embed)
@@ -109,7 +109,7 @@ class Timeout(commands.Cog):
             await self.create_error_embed(ctx, "invalid_duration")
             return
 
-        await ctx.message.delete()
+        #await ctx.message.delete()
 
         seconds = self.parse_duration(duration)
         min_seconds = 30
@@ -147,7 +147,7 @@ class Timeout(commands.Cog):
             await self.create_error_embed(ctx, error_message)
             return
         
-        await ctx.message.delete()
+        #await ctx.message.delete()
         
         if not member_obj.is_timed_out():
             await self.create_error_embed(ctx, "not_timed_out")
@@ -183,7 +183,7 @@ class Timeout(commands.Cog):
             await self.create_error_embed(ctx, "invalid_duration")
             return
         
-        await ctx.message.delete()
+        #await ctx.message.delete()
         
         if not member_obj.is_timed_out():
             await self.create_error_embed(ctx, "not_timed_out")
