@@ -1,7 +1,9 @@
 import discord
+import asyncio
+import datetime
 from redbot.core import app_commands, commands, Config
 from redbot.core.bot import Red
-import asyncio
+
 
 class VoteMod(commands.Cog):
     """
@@ -114,7 +116,7 @@ class VoteMod(commands.Cog):
                 elif vote["action"] == "kick":
                     await member.kick(reason="Vote kick passed.")
                 elif vote["action"] == "mute":
-                    await member.timeout(discord.utils.utcnow() + discord.timedelta(seconds=600), reason="Vote mute passed.")
+                    await member.timeout(datetime.timedelta(seconds=600), reason="Vote mute passed.")
                 result = f"{member.mention} has been {action_text}."
                 color = discord.Color.red() if vote["action"] == "ban" else discord.Color.orange()
             except Exception as e:
