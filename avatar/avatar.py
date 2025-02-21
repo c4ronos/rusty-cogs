@@ -2,9 +2,11 @@ import discord
 from typing import Optional, Union, Literal
 from redbot.core import app_commands, commands, Config
 import aiohttp
-import subprocess
-import os
 from io import BytesIO
+from PIL import Image, ImageSequence
+import apng
+import asyncio
+import os
 
 class Avatar(commands.Cog):
     """Get a user's global/guild avatar in an embed, with settings to manage the embed."""
@@ -14,30 +16,22 @@ class Avatar(commands.Cog):
         default_global = {"embed_color": None, "use_embed": True}
         self.config.register_global(**default_global)
 
-    async def convert_apng_to_gif(self, url: str) -> BytesIO:
+    async def convert_apng_to_gif(self, url: str) -> str:
         async with aiohttp.ClientSession() as session, session.get(url) as resp:
             if resp.status != 200:
                 return None
             img_data = await resp.read()
         
-        input_file = "temp.apng"
-        output_file = "temp.gif"
+        apng_obj = apng.APNG()
+        apng_obj.append(img_data)
         
-        with open(input_file, "wb") as f:
-            f.write(img_data)
+        frames = [frame[0] for frame in apng_obj.frames]
+        images = [Image.open(BytesIO(frame)) for frame in frames]
         
-        subprocess.run([
-            "ffmpeg", "-i", input_file, "-vf", "split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse",
-            "-y", output_file
-        ], check=True)
+        gif_path = "converted.gif"
+        images[0].save(gif_path, format="GIF", save_all=True, append_images=images[1:])
         
-        with open(output_file, "rb") as f:
-            gif_data = BytesIO(f.read())
-        
-        os.remove(input_file)
-        os.remove(output_file)
-        
-        return gif_data
+        return gif_path
 
     @commands.hybrid_command(name="avatar", usage="[user] [type]")
     @app_commands.describe(user="The user you wish to retrieve the avatar of (optional)", type="Global avatar or guild avatar or avatar decoration (optional)")
@@ -50,12 +44,9 @@ class Avatar(commands.Cog):
         """
 
         user = user or ctx.author
-        embed_color = await self.config.embed_color() or user.color
-        use_embed = await self.config.use_embed()
 
         if type is None:
             avatar_url = user.display_avatar.url
-            type = "global"
         elif type.lower() == "guild":
             try:
                 avatar_url = user.guild_avatar.url if user.guild_avatar else user.display_avatar.url
@@ -64,14 +55,19 @@ class Avatar(commands.Cog):
                 return
         elif type.lower() == "deco":
             avatar_url = user.avatar_decoration.url if user.avatar_decoration else user.display_avatar.url
-            gif_data = await self.convert_apng_to_gif(avatar_url)
-            if gif_data:
-                await ctx.send(file=discord.File(gif_data, filename="converted.gif"))
+            gif_path = await self.convert_apng_to_gif(avatar_url)
+            if gif_path:
+                await ctx.send(file=discord.File(gif_path, filename="converted.gif"))
+                await asyncio.sleep(10)
+                os.remove(gif_path)
             else:
                 await ctx.send("Failed to convert image.")
             return
         else:
             avatar_url = user.display_avatar.url
+
+        embed_color = await self.config.embed_color() or user.color
+        use_embed = await self.config.use_embed()
 
         if use_embed:
             embed = discord.Embed(color=embed_color, description=f"**[Avatar]({avatar_url})**")

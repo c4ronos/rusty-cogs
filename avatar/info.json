@@ -6,7 +6,7 @@
     "hidden": false,
     "disabled": false,
     "required_cogs": {},
-    "requirements": [],
+    "requirements": ["pillow", "apng"],
     "tags": ["server","user","avatar"],
     "type": "COG",
     "min_bot_version": "3.5.10"
