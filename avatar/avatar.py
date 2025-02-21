@@ -1,12 +1,7 @@
 import discord
 from typing import Optional, Union, Literal
 from redbot.core import app_commands, commands, Config
-import aiohttp
-from io import BytesIO
-from PIL import Image, ImageSequence
-import apng
-import asyncio
-import os
+
 
 class Avatar(commands.Cog):
     """Get a user's global/guild avatar in an embed, with settings to manage the embed."""
@@ -16,22 +11,6 @@ class Avatar(commands.Cog):
         default_global = {"embed_color": None, "use_embed": True}
         self.config.register_global(**default_global)
 
-    async def convert_apng_to_gif(self, url: str) -> str:
-        async with aiohttp.ClientSession() as session, session.get(url) as resp:
-            if resp.status != 200:
-                return None
-            img_data = await resp.read()
-        
-        apng_obj = apng.APNG()
-        apng_obj.append(img_data)
-        
-        frames = [frame[0] for frame in apng_obj.frames]
-        images = [Image.open(BytesIO(frame)) for frame in frames]
-        
-        gif_path = "converted.gif"
-        images[0].save(gif_path, format="GIF", save_all=True, append_images=images[1:])
-        
-        return gif_path
 
     @commands.hybrid_command(name="avatar", usage="[user] [type]")
     @app_commands.describe(user="The user you wish to retrieve the avatar of (optional)", type="Global avatar or guild avatar or avatar decoration (optional)")
@@ -44,9 +23,12 @@ class Avatar(commands.Cog):
         """
 
         user = user or ctx.author
+        embed_color = await self.config.embed_color() or user.color
+        use_embed = await self.config.use_embed()
 
         if type is None:
             avatar_url = user.display_avatar.url
+            type = "global"
         elif type.lower() == "guild":
             try:
                 avatar_url = user.guild_avatar.url if user.guild_avatar else user.display_avatar.url
@@ -55,23 +37,15 @@ class Avatar(commands.Cog):
                 return
         elif type.lower() == "deco":
             avatar_url = user.avatar_decoration.url if user.avatar_decoration else user.display_avatar.url
-            gif_path = await self.convert_apng_to_gif(avatar_url)
-            if gif_path:
-                await ctx.send(file=discord.File(gif_path, filename="converted.gif"))
-                await asyncio.sleep(10)
-                os.remove(gif_path)
-            else:
-                await ctx.send("Failed to convert image.")
-            return
+            default_url = user.display_avatar.url
         else:
             avatar_url = user.display_avatar.url
 
-        embed_color = await self.config.embed_color() or user.color
-        use_embed = await self.config.use_embed()
-
         if use_embed:
-            embed = discord.Embed(color=embed_color, description=f"**[Avatar]({avatar_url})**")
-            embed.set_author(name=f"{user.name} ~ {user.display_name}", icon_url=avatar_url)
+            title = "Decoration" if user.avatar_decoration and type.lower() == "deco" else "Avatar"
+            iconUrl = default_url if type.lower() == "deco" else avatar_url
+            embed = discord.Embed(color=embed_color, description=f"**[{title}]({avatar_url})**")
+            embed.set_author(name=f"{user.name} ~ {user.display_name}", icon_url=iconUrl)
             embed.set_image(url=avatar_url)
 
             if ctx.channel.permissions_for(ctx.guild.me).embed_links:
@@ -80,6 +54,7 @@ class Avatar(commands.Cog):
                 await ctx.send("I do not have permission to send embeds in this channel.")
         else:
             await ctx.send(avatar_url)
+
 
     @commands.group(name="avatar_embed")
     @commands.is_owner()
@@ -90,6 +65,7 @@ class Avatar(commands.Cog):
         > With this, you have the ability to change embed color or disable the embed altogether.
         """
         return
+
 
     @avatar_embed.command(name="color")
     @commands.is_owner()
@@ -105,11 +81,13 @@ class Avatar(commands.Cog):
             await ctx.send("Embed color has been reset to default.")
         else:
             try:
+                # Only accept hex (and `clear`)
                 embed_color = discord.Color(int(color.lstrip("#"), 16))
                 await self.config.embed_color.set(embed_color.value)
                 await ctx.send(f"Embed color has been set to {color}.")
             except ValueError:
                 await ctx.send("Invalid hex color code. Please provide a valid hex color code or 'clear'.")
+
 
     @avatar_embed.command(name="show")
     @commands.guild_only()
@@ -123,5 +101,6 @@ class Avatar(commands.Cog):
         await self.config.use_embed.set(show)
         await ctx.send(f"Avatar embed has been {'enabled' if show else 'disabled'}.")
 
+
     async def red_delete_data_for_user(self, **kwargs) -> None:
-        pass 
+        pass
