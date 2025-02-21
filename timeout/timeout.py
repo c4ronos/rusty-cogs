@@ -47,40 +47,39 @@ class Timeout(commands.Cog):
     
 
     async def create_timeout_embed(self, ctx, title, duration, timestamp, reason, target=None):
-        color = discord.Color(0x3ACEFF)
-        desc_reason = "Purpose" if reason=="Timeout addition." else "Reason"
-        description = f"- ⏳ **Ending On:** <t:{timestamp}:f>\n- 🔒 **{desc_reason}:** {reason or 'No Reason.'}\n- 🔑 **Moderator:** {ctx.author.mention}"
+        color = discord.Color(0xFFFFFF)
+        if title == "Timeout Result":
+            description = f"- `{target.name}` has been muted for `{duration}`. Ends in: <t:{timestamp}:R>\n\n> **Reason:** {reason or 'No Reason'}"
+        else:
+            description = f"- `{target.name}`'s mute extended by `{duration}`. Ends in: <t:{timestamp}:R>\n\n> **Reason:** {reason or 'No Reason'}"
+
         embed = discord.Embed(color=color, title=title, description=description)
-        embed.add_field(name="> **Target Memberㅤㅤ**", value=f"ㅤ`{target.name}`")
-        embed.add_field(name="> **Durationㅤㅤㅤㅤㅤ** ", value=f"ㅤ`{duration}`")
         await ctx.send(embed=embed)
 
 
     async def create_untimeout_embed(self, ctx, title, target=None):
-        color = discord.Color(0x3ACEFF)
-        description = f"- ⏳ **Ending On:** Timeout was removed.\n- 🔑 **Moderator:** {ctx.author.mention}"
+        color = discord.Color(0xFFFFFF)
+        description = f"- `{target.name}`'s mute has been removed."
         embed = discord.Embed(color=color, title=title, description=description)
-        embed.add_field(name="> **Target Memberㅤㅤ**", value=f"ㅤ`{target.name}`")
-        embed.add_field(name="> **Durationㅤㅤㅤㅤㅤ** ", value=f"ㅤ`None`")
         await ctx.send(embed=embed)
 
 
     async def create_error_embed(self, ctx, description):
         color = discord.Color(0xFF1A1A)
         title = "Unsuccessful Operation"
-        docs = "- 📜 [Cog documentation](https://github.com/rusty-man/rusty-cogs/tree/main/timeout)"
+        docs = "- [Cog documentation](https://github.com/rusty-man/rusty-cogs/tree/main/timeout)"
         if description == "user_not_found":
-            description = f"- ❌ User not found. Try again.ㅤㅤㅤㅤㅤㅤㅤㅤ\n{docs}"
+            description = f"- User not found. Try again.ㅤㅤㅤㅤㅤㅤㅤㅤ\n{docs}"
         elif description == "not_timed_out":
-            description = f"- ❌ User is currently not timed out.ㅤㅤㅤㅤㅤ\n{docs}"
+            description = f"- User is currently not timed out.ㅤㅤㅤㅤㅤ\n{docs}"
         elif description == "timeout_duration":
-            description = f"- ❌ Timeout duration cannot be `< 1m` / `> 28d`.\n{docs}"
+            description = f"- Timeout duration cannot be `< 30s` / `> 28d`.\n{docs}"
         elif description == "invalid_duration":
-            description = f"- ❌ That is not a valid time format.ㅤㅤㅤㅤㅤ\n{docs}"
+            description = f"- That is not a valid time format.ㅤㅤㅤㅤㅤ\n{docs}"
         elif description == "role_heirarchy":
-            description = f"- ❌ Insufficient permissions (bot/author hierarchy).\n{docs}"
+            description = f"- Insufficient permissions (bot/author hierarchy).\n{docs}"
         elif description == "user_mod":
-            description = f"- ❌ Cannot timeout members with timeout permissions.\n{docs}"
+            description = f"- Cannot timeout members with timeout permissions.\n{docs}"
 
         embed = discord.Embed(color=color, title=title, description=description)
         await ctx.send(embed=embed)
@@ -90,11 +89,11 @@ class Timeout(commands.Cog):
     @app_commands.describe(member="the member to be timed out. (can be mention/id/username)", duration="[optional] the duration of timeout e.g. 2d3h30m", reason="[optional] the reason for timeout")
     @commands.has_permissions(moderate_members=True)
     @commands.guild_only()
-    async def timeout(self, ctx: commands.Context, member: str, duration: str ="30m", *, reason: str =None):
+    async def timeout(self, ctx: commands.Context, member: str, duration: str ="10m", *, reason: str =None):
         """Times out a member for a specified duration.
         
         > example: `[p]timeout @yapper 1h30m talks too much`
-        > [duration] is optional. default is 30m.
+        > [duration] is optional. default is 10m.
         > Timeout duration cannot exceed 28days.
         """
 
@@ -113,7 +112,7 @@ class Timeout(commands.Cog):
         await ctx.message.delete()
 
         seconds = self.parse_duration(duration)
-        min_seconds = 60
+        min_seconds = 30
         max_seconds = 28 * 86400
         if seconds < min_seconds or seconds > max_seconds:
             await self.create_error_embed(ctx, "timeout_duration")
@@ -161,14 +160,14 @@ class Timeout(commands.Cog):
                 await ctx.send(f"Failed to untimeout member. Try again. [{Exception}]")
 
 
-    @commands.hybrid_command(name="extendtimeout", usage="<member> [duration]")
-    @app_commands.describe(member="the member to be timed out. (can be mention/id/username)", duration="[optional] the duration of timeout e.g. 2d3h30m")
+    @commands.hybrid_command(name="extendtimeout", usage="<member> [duration] [reason]")
+    @app_commands.describe(member="the member to be timed out. (can be mention/id/username)", duration="[optional] the duration of timeout e.g. 2d3h30m", reason="[optional] the reason for timeout")
     @commands.has_permissions(moderate_members=True)
     @commands.guild_only()
-    async def extendtimeout(self, ctx: commands.Context, member: str, duration="30m"):
+    async def extendtimeout(self, ctx: commands.Context, member: str, duration: str ="10m", *, reason: str =None):
         """Extends the timeout duration for a member.
         
-        > example: `[p]extendtimeout @yapper 1h30m`
+        > example: `[p]extendtimeout @yapper 1h30m talks too much`
         > Total timeout duration cannot exceed 28days
         """
         
@@ -193,7 +192,7 @@ class Timeout(commands.Cog):
             seconds = self.parse_duration(duration)
             current = member_obj.timed_out_until
 
-            min_seconds = 60
+            min_seconds = 30
             max_seconds = 28 * 86400 - (current - discord.utils.utcnow()).total_seconds()
             if seconds < min_seconds or seconds > max_seconds:
                 await self.create_error_embed(ctx, "timeout_duration")
@@ -203,8 +202,8 @@ class Timeout(commands.Cog):
             timestamp = int(new.timestamp())
             try:
                 await member_obj.timeout(None)
-                await member_obj.timeout(new)
-                await self.create_timeout_embed(ctx, "Timeout Result", duration, timestamp, "Timeout addition.", member_obj)
+                await member_obj.timeout(new, reason=reason)
+                await self.create_timeout_embed(ctx, "Timeout Extension", duration, timestamp, reason, member_obj)
             except Exception:
                 await ctx.send(f"Failed to extend timeout. Try again. [{Exception}]")
 
