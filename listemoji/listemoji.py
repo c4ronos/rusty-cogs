@@ -3,9 +3,6 @@ import time
 from redbot.core import app_commands, commands
 from redbot.core.utils.chat_formatting import pagify
 
-__author__ = ["kennnyshiwa", "rusty-man"]
-
-
 class ListEmoji(commands.Cog):
     """List all available emojis in a server"""
 
@@ -29,19 +26,20 @@ class ListEmoji(commands.Cog):
         if not ids:
             text = "\n".join(
                 [
-                    f"{emoji} ⟶ `:{emoji.name}:`" for emoji in ctx.guild.emojis
+                    f"{emoji} [:{emoji.name}:](<{emoji.url}>)" for emoji in ctx.guild.emojis
                 ]
             )
         else:
             text = "\n".join(
                 [
-                    f"{emoji} ⟶ `<{'a' if emoji.animated else ''}:{emoji.name}:{emoji.id}>`"
+                    f"{emoji} [<{'a' if emoji.animated else ''}:{emoji.name}:{emoji.id}>](<{emoji.url}>)"
                     for emoji in ctx.guild.emojis
                 ]
             )
         
+        await ctx.send("Sent!", ephemeral=True)
         # separate title to allow for its deletion
-        await ctx.send(f"Emojis for: **{ctx.guild.name}**\n_ _")
+        await ctx.channel.send(f"Emojis for: **{ctx.guild.name}**\n_ _")
 
         for page in pagify(text):
             time.sleep(0.5)             # prevent rate limit in servers with lots of emojis
