@@ -13,7 +13,7 @@ class VoteMod(commands.Cog):
     def __init__(self, bot: Red):
         self.bot = bot
         self.config = Config.get_conf(self, identifier=167470521189)
-        self.config.register_guild(required_votes=5)
+        self.config.register_guild(required_votes=3)
         self.active_votes = {}
 
     @commands.hybrid_command(name="voteban")
@@ -36,6 +36,7 @@ class VoteMod(commands.Cog):
 
     @commands.hybrid_command(name="votemute")
     @app_commands.describe(member="The member to be muted")
+    @commands.has_permissions(moderate_members=True)
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.guild_only()
     async def votemute(self, ctx: commands.Context, member: discord.Member):
