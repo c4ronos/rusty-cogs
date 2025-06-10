@@ -37,7 +37,6 @@ class ListEmoji(commands.Cog):
                 ]
             )
         
-        await ctx.send("Sent!", ephemeral=True)
         # separate title to allow for its deletion
         await ctx.channel.send(f"Emojis for: **{ctx.guild.name}**\n_ _")
 
@@ -47,3 +46,6 @@ class ListEmoji(commands.Cog):
                 await ctx.channel.send(page)
             else:
                 await ctx.send(page)
+
+        if ctx.interaction:
+            await ctx.send("Sent!", ephemeral=True)
