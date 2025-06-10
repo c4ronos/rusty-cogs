@@ -32,11 +32,13 @@ class ListEmoji(commands.Cog):
         else:
             text = "\n".join(
                 [
-                    f"{emoji} [<{'a' if emoji.animated else ''}:{emoji.name}:{emoji.id}>](<{emoji.url}>)"
+                    f"{emoji} <{'a' if emoji.animated else ''}:{emoji.name}:{emoji.id}>"
                     for emoji in ctx.guild.emojis
                 ]
             )
-        
+
+        if ctx.interaction:
+            await ctx.send("Sent!", ephemeral=True)
         # separate title to allow for its deletion
         await ctx.channel.send(f"Emojis for: **{ctx.guild.name}**\n_ _")
 
@@ -46,6 +48,3 @@ class ListEmoji(commands.Cog):
                 await ctx.channel.send(page)
             else:
                 await ctx.send(page)
-
-        if ctx.interaction:
-            await ctx.send("Sent!", ephemeral=True)
