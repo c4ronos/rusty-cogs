@@ -32,7 +32,7 @@ class ListEmoji(commands.Cog):
         else:
             text = "\n".join(
                 [
-                    f"{emoji} <{'a' if emoji.animated else ''}:{emoji.name}:{emoji.id}>"
+                    f"{emoji} `<{'a' if emoji.animated else ''}:{emoji.name}:{emoji.id}>`"
                     for emoji in ctx.guild.emojis
                 ]
             )
