@@ -1,0 +1,13 @@
+{
+    "author": ["rusty-man"],
+    "description": "Cog to visualize HEX color as an image and show its converted values.",
+    "install_msg": "Thanks for installing `visualiser`. See `[p]help Visualizer` for details.\n\nVisit [-this-](<https://github.com/rusty-man/rusty-cogs/tree/main/visualizer>) for a dedicated guide.",
+    "short": "Visualize a HEX color",
+    "hidden": false,
+    "disabled": false,
+    "required_cogs": {},
+    "requirements": ["Pillow","webcolors"],
+    "tags": ["hex","color","visualizer"],
+    "type": "COG",
+    "min_bot_version": "3.5.10"
+  }

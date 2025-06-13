@@ -34,12 +34,13 @@ load cog
 | [Nuker](nuker/)            | WIP         | A nuker that manages to do its job amidst strict rate limits.|
 | [RegexSearch](regexsearch/)| Alpha       | Search messages in a channel with regex.                     |
 | [Timeout](timeout/)        | Beta        | Manage timeouts for a user.                                  |
+| [Visualizer](visualizer/)  | Beta        | Visualizes a HEX color as an image.                          |
 | [VoteMod](votemod/)        | Stable      | Vote-based commands for banning / kicking / muting users.    |
 | [WaifuIM](waifuim/)        | Stable      | Get images from waifu.im api.                                |
 |⠀   ⠀                   |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀                                         |
 
 # Contact⠀⚒
 ---
-➥ dm me - [`yoshimitsu00`](https://discordapp.com/users/727378306340487178) or `0eus` || you can open an issue [-here-](https://github.com/rusty-man/rusty-cogs/issues) aswell
+➥ dm me - [`p1winter`](https://discordapp.com/users/727378306340487178) or `0eus` || you can open an issue [-here-](https://github.com/rusty-man/rusty-cogs/issues) aswell
 <br/> <br/>
 ➥ ping me in [#support_othercogs](https://discord.com/channels/240154543684321280/240212783503900673) in the [Red - Cog Support](https://discord.gg/red-cog-support-240154543684321280) server
