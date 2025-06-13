@@ -1,5 +1,6 @@
 import discord
 import webcolors
+import colorsys
 from io import BytesIO
 from PIL import Image
 from redbot.core import commands, app_commands
@@ -11,32 +12,21 @@ class Visualizer(commands.Cog):
 
     def closest_color_name(self, rgb):
         try:
-            return webcolors.rgb_to_name(rgb)
+            return webcolors.rgb_to_name(rgb, spec='css3')
         except ValueError:
-            min_colors = {}
-            for name, hex_code in webcolors.CSS3_NAMES_TO_HEX.items():
-                r_c, g_c, b_c = webcolors.hex_to_rgb(hex_code)
-                dist = (r_c - rgb[0]) ** 2 + (g_c - rgb[1]) ** 2 + (b_c - rgb[2]) ** 2
-                min_colors[dist] = name
-            return min_colors[min(min_colors.keys())]
+            min_dist = None
+            closest_name = None
+            for name in webcolors.names('css3'):
+                r2, g2, b2 = webcolors.name_to_rgb(name)
+                dist = (r2 - rgb[0])**2 + (g2 - rgb[1])**2 + (b2 - rgb[2])**2
+                if min_dist is None or dist < min_dist:
+                    min_dist = dist
+                    closest_name = name
+            return closest_name
 
     def rgb_to_hsl(self, rgb):
         r, g, b = [x / 255.0 for x in rgb]
-        maxc, minc = max(r, g, b), min(r, g, b)
-        l = (minc + maxc) / 2.0
-        if minc == maxc:
-            return (0, 0, round(l * 100))
-        s = (maxc - minc) / (maxc + minc) if l <= 0.5 else (maxc - minc) / (2.0 - maxc - minc)
-        rc = (maxc - r) / (maxc - minc)
-        gc = (maxc - g) / (maxc - minc)
-        bc = (maxc - b) / (maxc - minc)
-        if r == maxc:
-            h = bc - gc
-        elif g == maxc:
-            h = 2 + rc - bc
-        else:
-            h = 4 + gc - rc
-        h = (h / 6.0) % 1.0
+        h, l, s = colorsys.rgb_to_hls(r, g, b)
         return (round(h * 360), round(s * 100), round(l * 100))
 
     def rgb_to_cmyk(self, rgb):
