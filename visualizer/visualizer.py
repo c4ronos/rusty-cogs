@@ -55,7 +55,7 @@ class Visualizer(commands.Cog):
         return (round(c * 100), round(m * 100), round(y * 100), round(k * 100))
 
 
-    @commands.hybrid_command(name="visualizer", usage="<hex>")
+    @commands.hybrid_command(name="visualize", usage="<hex>")
     @app_commands.describe(hex="The 3 or 6 digit hex value")
     async def visualize(self, ctx: commands.Context, hexcode: str):
         """Visualize a HEX color as an image.
