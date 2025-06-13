@@ -6,7 +6,7 @@ from redbot.core import app_commands, commands
 
 
 class Visualizer(commands.Cog):
-    """Visualizes a HEX color as an image and shows its converted values."""
+    """Visualizes a HEX color as an image and show its converted values."""
 
     def closest_color_name(self, rgb):
         try:
@@ -57,14 +57,14 @@ class Visualizer(commands.Cog):
 
     @commands.hybrid_command(name="visualize", usage="<hex>")
     @app_commands.describe(hex="The 3 or 6 digit hex value")
-    async def visualize(self, ctx: commands.Context, hexcode: str):
+    async def visualize(self, ctx: commands.Context, hex: str):
         """Visualize a HEX color as an image.
         
         > <hex> can be 3 or 6 digit hex color. `#` is optional.
         > Also displays the color's name and its value in other formats.
         """
 
-        hexcode = hexcode.lstrip('#')
+        hexcode = hex.lstrip('#')
         if len(hexcode) == 3:
             hexcode = ''.join([c * 2 for c in hexcode])
 
