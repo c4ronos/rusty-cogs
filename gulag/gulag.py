@@ -65,8 +65,8 @@ class Gulag(commands.Cog):
         """
         guild_config = self.config.guild(ctx.guild)
         gulag_role_id = await guild_config.gulag_role()
-
         gulag_role = ctx.guild.get_role(gulag_role_id)
+
         if not gulag_role_id:
             await ctx.send("Gulag role not found.")
             return
@@ -84,6 +84,30 @@ class Gulag(commands.Cog):
             await ctx.send(f"{member.mention} has been released from the gulag.")
         else:
             await ctx.send(f"{member.display_name} is not currently in the gulag.")
+
+    
+    @commands.hybrid_command(name="gulaglist")
+    @commands.has_permissions(administrator=True)
+    @commands.guild_only()
+    async def gulag_list(self, ctx: commands.Context):
+        """Lists all users currently in the gulag."""
+
+        guild_config = self.config.guild(ctx.guild)
+        gulag_role_id = await guild_config.gulag_role()
+
+        if not gulag_role_id:
+            await ctx.send("Gulag role hasn't been configured.")
+            return
+
+        gulag_role = ctx.guild.get_role(gulag_role_id)
+        members = [f"{member.name} ({member.id})" for member in gulag_role.members]
+
+        if not members:
+            await ctx.send("No members are currently in the gulag.")
+            return
+
+        message = "**Current Gulag Members:**\n\n" + "\n".join(members)
+        await ctx.send(message)
 
 
     @commands.group()
@@ -108,11 +132,12 @@ class Gulag(commands.Cog):
     async def set_gulag_role(self, ctx: commands.Context, role: discord.Role):
         """Configures the gulag role."""
         gulag_channel_id = await self.config.guild(ctx.guild).gulag_channel()
-
         gulag_channel = ctx.guild.get_channel(gulag_channel_id)
+
         if not gulag_channel:
             await ctx.send("Gulag channel is not configured for this guild.")
             return
+
         if not role:
             await ctx.send("Role not found.")
             return
@@ -164,9 +189,6 @@ class Gulag(commands.Cog):
             return
 
         gulag_role = guild.get_role(gulag_role_id)
-        if not gulag_role:
-            return
-
         gulag_channel_id = await guild_config.gulag_channel()
         gulag_channel = guild.get_channel(gulag_channel_id)
 
