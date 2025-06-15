@@ -100,7 +100,7 @@ class Gulag(commands.Cog):
             return
 
         gulag_role = ctx.guild.get_role(gulag_role_id)
-        members = [f"{member.name} ({member.id})" for member in gulag_role.members]
+        members = [f"{member.name} \|| {member.id}" for member in gulag_role.members]
 
         if not members:
             await ctx.send("No members are currently in the gulag.")
