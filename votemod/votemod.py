@@ -113,7 +113,7 @@ class VoteMod(commands.Cog):
             action_text = "banned" if vote["action"] == "ban" else "kicked" if vote["action"] == "kick" else "muted"
             try:
                 if vote["action"] == "ban":
-                    await member.ban(reason="Vote ban passed.")
+                    await member.ban(reason="Vote ban passed.", delete_message_seconds=0)
                 elif vote["action"] == "kick":
                     await member.kick(reason="Vote kick passed.")
                 elif vote["action"] == "mute":
